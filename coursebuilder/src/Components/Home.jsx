@@ -1,8 +1,11 @@
 import React from 'react';
-import {Heading, Stack, VStack, Text, Button, Image} from "@chakra-ui/react";
+import {Heading, Stack, VStack, Text, Button, Image, Box, HStack} from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 import "./home.css"
 import vg from "../Assets/Images/gilles-de-muynck-PtJDCD4fTI4-unsplash.jpg"
+import {CgGoogle} from "react-icons/cg"
+import {SiCodeforces, SiLeetcode} from "react-icons/si"
+import {DiAws } from "react-icons/di"
 
 const Home = () => {
   return (
@@ -29,10 +32,29 @@ const Home = () => {
 
                     </VStack>
 
-                    <Image boxSize={"md"} src={vg} />
+                    {/* <Image boxSize={"md"} src={vg} objectFit={"contain"}/> */}
              </Stack>
 
         </div> 
+
+        <Box padding={'8'} bg = "blackAlpha.700">
+            <Heading 
+            // children = "TEXT SOMETHING" 
+            textAlign={'center'}
+            fontFamily={"body"}
+            />
+
+            <HStack 
+            className="experienceBanner" 
+            justifyContent={'space-evenly'}
+            marginTop={"1"}>
+                <CgGoogle />
+                <SiLeetcode />
+                <SiCodeforces />
+                <DiAws />
+
+            </HStack>
+        </Box>
     </section>
   )
 }

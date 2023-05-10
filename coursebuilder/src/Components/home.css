@@ -3,9 +3,21 @@
     padding: 5rem;
     box-sizing: border-box;
 }
+
 @media (prefers-color-scheme: dark) {
     body {
       background-color: #333333;
       color: #ffffff;
     }
-  }
+}
+
+.experienceBanner > svg{
+  color: #ffffff;
+  font-size: 3rem;
+  transition: color 0.5s;
+}
+
+.experienceBanner > svg:hover{
+  color: rgb(81, 29, 7);
+}
+
