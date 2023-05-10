@@ -1,0 +1,11 @@
+.container {
+    height: 100vh;
+    padding: 5rem;
+    box-sizing: border-box;
+}
+@media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333333;
+      color: #ffffff;
+    }
+  }
