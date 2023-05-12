@@ -58,7 +58,7 @@ const Home = () => {
                 <Link to={"/Leetcode"}>      
                     <SiLeetcode />
                 </Link>
-                <Link to={"/Codeforces"}>      
+                <Link to={"/Leetcode"}>      
                     <SiCodeforces />
                 </Link>
                 <Link to={"/AWS-Guide"}>      
