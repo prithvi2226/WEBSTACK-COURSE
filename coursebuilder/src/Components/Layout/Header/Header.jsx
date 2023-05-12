@@ -9,7 +9,7 @@ import {Button,
         HStack,
         VStack,
         useDisclosure} from "@chakra-ui/react";
-import {RiMenu5Fill} from "react-icons/ri";
+import {RiDashboardFill, RiLogoutBoxLine, RiMenu5Fill} from "react-icons/ri";
 
 
 const LinkButton = ({url = '/', title = 'Home'}) => (
@@ -26,7 +26,15 @@ const Header = () => {
 
   const{isOpen, onOpen, onClose} = useDisclosure();
 
-  const isAuthenticated = false;
+  const isAuthenticated = true;
+  
+  const user = {
+    role: 'admin',
+  }
+
+  const logoutHandler = () => {
+    console.log("Logout");
+  }
 
   return (
     <>
@@ -45,7 +53,7 @@ const Header = () => {
     <Drawer placement="left" onClose={onClose} isOpen= {isOpen}>
       <DrawerOverlay backdropFilter={'blur(2px)'} />
       <DrawerContent>
-        <DrawerHeader>COURSE BUNDLER</DrawerHeader>
+        <DrawerHeader>STUDY CONTENT</DrawerHeader>
 
         <DrawerBody>
         
@@ -63,21 +71,34 @@ const Header = () => {
                     width={"80%"}>
               {isAuthenticated ? (
                 <>
+                <VStack>
+                  <HStack>
+                  
+                  <LinkButton url = "/profile" title = "PROFILE"></LinkButton>
+                  <Button variant={'ghost'} onClick={logoutHandler}>
+                    <RiLogoutBoxLine />
+                    LOGOUT
+                    </Button>
+
+                  </HStack>
+
+                  {
+                    user && user.role === "admin" && <Link to={"/admin/dashboard"}>
+                      <Button colorScheme="facebook">
+                        <RiDashboardFill style={{margin: '3px'}}/> Dashboard
+                      </Button>
+                    </Link>
+                  }
+
+                </VStack>
                 </>
               ) : (
                 <>
-                  <Link to = "/login">
-                    <button>
-                      LOG IN
-                    </button>
-                  </Link>
+                  <LinkButton url = "/login" title = "LOG IN">
+                  </LinkButton>
 
-
-                  <Link to = "/register">
-                    <button>
-                      SIGN UP
-                    </button>
-                  </Link>
+                  <LinkButton url = "/register" title="REGISTER">
+                  </LinkButton>
                 </>
               )}
             </HStack>
