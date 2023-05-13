@@ -12,8 +12,8 @@ import {Button,
 import {RiDashboardFill, RiLogoutBoxLine, RiMenu5Fill} from "react-icons/ri";
 
 
-const LinkButton = ({url = '/', title = 'Home'}) => (
-  <Link to={url}>
+const LinkButton = ({url = '/', title = 'Home', onClose}) => (
+  <Link onClick={onClose}  to={url}>
     <Button variant={'ghost'}>
       {title}
     </Button>
@@ -26,7 +26,7 @@ const Header = () => {
 
   const{isOpen, onOpen, onClose} = useDisclosure();
 
-  const isAuthenticated = true;
+  const isAuthenticated = false;
   
   const user = {
     role: 'admin',
@@ -34,6 +34,7 @@ const Header = () => {
 
   const logoutHandler = () => {
     console.log("Logout");
+    onClose();
   }
 
   return (
@@ -58,12 +59,12 @@ const Header = () => {
         <DrawerBody>
         
           <VStack spacing={"4"} alignItems={"flex-start"}>
-            <LinkButton url = "/" title = "LANDING" />
-            <LinkButton url = "/Leetcode" title = "LEETCODE PRACTICE & OTHERS" />
-            <LinkButton url = "/AWS-Guide" title = "AWS ASSOCIATE ARCHITECT GUIDE" />
-            <LinkButton url = "/InterviewStudy" title = "INTERVIEW PREP" />
-            <LinkButton url = "/Feedback" title = "LET ME KNOW" />
-            <LinkButton url = "/About" title = "ABOUT US" />
+            <LinkButton url = "/" title = "LANDING" onClick={onClose}/>
+            <LinkButton url = "/Leetcode" title = "LEETCODE PRACTICE & OTHERS" onClick={onClose}/>
+            <LinkButton url = "/AWS-Guide" title = "AWS ASSOCIATE ARCHITECT GUIDE" onClick={onClose}/>
+            <LinkButton url = "/InterviewStudy" title = "INTERVIEW PREP" onClick={onClose}/>
+            <LinkButton url = "/Feedback" title = "LET ME KNOW" onClick={onClose}/>
+            <LinkButton url = "/About" title = "ABOUT US" onClick={onClose}/>
 
             <HStack justifyContent={"space-evenly"}
                     position={"absolute"}
@@ -74,7 +75,7 @@ const Header = () => {
                 <VStack>
                   <HStack>
                   
-                  <LinkButton url = "/profile" title = "PROFILE"></LinkButton>
+                  <LinkButton url = "/profile" title = "PROFILE" onClick={onClose}></LinkButton>
                   <Button variant={'ghost'} onClick={logoutHandler}>
                     <RiLogoutBoxLine />
                     LOGOUT
@@ -83,7 +84,7 @@ const Header = () => {
                   </HStack>
 
                   {
-                    user && user.role === "admin" && <Link to={"/admin/dashboard"}>
+                    user && user.role === "admin" && <Link onClick={onClose} to={"/admin/dashboard"}>
                       <Button colorScheme="facebook">
                         <RiDashboardFill style={{margin: '3px'}}/> Dashboard
                       </Button>
@@ -94,10 +95,10 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <LinkButton url = "/login" title = "LOG IN">
+                  <LinkButton url = "/login" title = "LOG IN" onClick={onClose}>
                   </LinkButton>
 
-                  <LinkButton url = "/register" title="REGISTER">
+                  <LinkButton url = "/register" title="REGISTER" onClick={onClose}>
                   </LinkButton>
                 </>
               )}
