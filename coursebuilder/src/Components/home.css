@@ -19,6 +19,17 @@ body {
 .experienceBanner > a:hover{
   color: rgb(81, 29, 7);
 }
+
+.course {
+  margin-bottom: 1rem;
+  transition: all 0.5s;   
+}
+
+.course:hover{
+  transform: translateY(-10px);
+}
+
+
 /* 
 .container2 {
   height: 100vh;
