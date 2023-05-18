@@ -5,7 +5,7 @@ import "./home.css"
 import {CgGoogle} from "react-icons/cg"
 import {SiCodeforces, SiLeetcode} from "react-icons/si"
 import {DiAws } from "react-icons/di"
-//import Header from '../Components/Layout/Header/Header';
+//import Header from '../Components/Layout/Header/Header'; if we want header in the home page
 // import {Image} from "@chakra-ui/react"
 // import vg from "../Assets/Images/gilles-de-muynck-PtJDCD4fTI4-unsplash.jpg"
 // import introVideo from "../Assets/Videos/The Mercedes-AMG G 63_ Stronger Than Time.mp4"

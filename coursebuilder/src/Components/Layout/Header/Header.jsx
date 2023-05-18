@@ -12,6 +12,7 @@ import {Button,
 import {RiDashboardFill, RiLogoutBoxLine, RiMenu5Fill} from "react-icons/ri";
 
 
+
 const LinkButton = ({url = '/', title = 'Home', onClose}) => (
   <Link onClick={onClose}  to={url}>
     <Button variant={'ghost'}>
@@ -43,7 +44,7 @@ const Header = () => {
     <Button 
     onClick={onOpen}
     colorScheme={"gray"} 
-    width={"16"} 
+    width={"15"} 
     height={"12"}
     position={"fixed"}
     top={"2"}
@@ -95,7 +96,7 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <LinkButton url = "/login" title = "LOG IN" onClick={onClose}>
+                  <LinkButton url = "/Login" title = "LOG IN" onClick={onClose}>
                   </LinkButton>
 
                   <LinkButton url = "/register" title="REGISTER" onClick={onClose}>
