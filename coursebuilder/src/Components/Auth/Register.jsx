@@ -2,17 +2,29 @@ import { Box, Button, Container, FormLabel, HStack, Heading, Input, VStack } fro
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
-const Login = () => {
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Register = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
   return (
     <Container h = {'95vh'}>
         <VStack h={'full'} justifyContent={"center"} spacing={'16'}>
-            <Heading children={"WELCOME BACK TO PRITHVI"} />
+            <Heading textTransform={'uppercase'} children={"WELCOME TO THE PRI EXPERIENCE"} />
 
             <form style={{width: '100%'}}>
+            <Box my={"2"}>
+              <FormLabel htmlFor = "name" children="Name" />
+              <Input required id="name" 
+                     value={name} 
+                     onChange={e => setName(e.target.value)} 
+                     placeholder='Tim'
+                     type={'name'}
+                     focusBorderColor="purple.500"
+
+                      />
+
+              </Box>
               <Box my={"2"}>
               <FormLabel htmlFor = "email" children="Email" />
               <Input required id="email" 
@@ -75,4 +87,5 @@ const Login = () => {
 
   )
 }
-export default Login
+
+export default Register
