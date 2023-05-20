@@ -56,7 +56,7 @@ const Login = () => {
 
               
               <Box height={"6"}>
-                <Link to="/forgetpassword">
+                <Link to="/ForgotPassword">
                   <Button fontSize={'sm'} variant="link" >
                     I FORGOT MY PASSWORD
                   </Button>
