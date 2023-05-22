@@ -64,7 +64,8 @@ const Header = () => {
             <LinkButton url = "/Leetcode" title = "LEETCODE PRACTICE & OTHERS" onClick={onClose}/>
             <LinkButton url = "/AWS-Guide" title = "AWS ASSOCIATE ARCHITECT GUIDE" onClick={onClose}/>
             <LinkButton url = "/InterviewStudy" title = "INTERVIEW PREP" onClick={onClose}/>
-            <LinkButton url = "/Feedback" title = "LET ME KNOW" onClick={onClose}/>
+            <LinkButton url = "/Contact" title = "FEEDBACK" onClick={onClose}/>
+            <LinkButton url = "/Request" title = "REQUEST A COURSE??" onClick={onClose}/>
             <LinkButton url = "/About" title = "ABOUT US" onClick={onClose}/>
 
             <HStack justifyContent={"space-evenly"}
