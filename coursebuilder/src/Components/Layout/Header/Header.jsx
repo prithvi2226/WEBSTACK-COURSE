@@ -60,7 +60,7 @@ const Header = () => {
         <DrawerBody>
         
           <VStack spacing={"4"} alignItems={"flex-start"}>
-            <LinkButton url = "/" title = "LANDING" onClick={onClose}/>
+            <LinkButton url = "/MAIN" title = "HOME" onClick={onClose}/>
             <LinkButton url = "/Leetcode" title = "LEETCODE PRACTICE & OTHERS" onClick={onClose}/>
             <LinkButton url = "/AWS-Guide" title = "AWS ASSOCIATE ARCHITECT GUIDE" onClick={onClose}/>
             <LinkButton url = "/InterviewStudy" title = "INTERVIEW PREP" onClick={onClose}/>
