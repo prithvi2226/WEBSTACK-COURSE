@@ -77,7 +77,7 @@ const About = () => {
           I got courses that will get the skills for u to pay the bills
         </Text>
 
-        <Link to={"/subscribe"}>
+        <Link to={"/Subscribe"}>
           <Button variant={"ghost"} colorScheme='purple'>
             CHECK OUR PLANS
           </Button>
