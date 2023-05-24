@@ -65,9 +65,12 @@ const Founder = () => (
 
 const About = () => {
   return (
-    <><Header /><Container maxW={"container.lg"}
+    <><Header />
+    <Container maxW={"container.lg"}
       padding={"16"}
-      boxShadow={'lg'}>
+      boxShadow={'lg'}
+      bg={"blackAlpha.300"}
+      h={"90vh"}>
       <Heading children={"About US"}
         textAlign={["center", "left"]} />
       <Founder />
@@ -79,7 +82,7 @@ const About = () => {
 
         <Link to={"/Subscribe"}>
           <Button variant={"ghost"} colorScheme='purple'>
-            CHECK OUR PLANS
+            GET THE PRO PLAN
           </Button>
         </Link>
 

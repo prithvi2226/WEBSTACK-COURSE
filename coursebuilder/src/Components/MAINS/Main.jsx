@@ -48,7 +48,7 @@ const Course = ({views,
       <Stack direction={["column", "row"]}
              alignItems="center" >
         
-        <Link to={`/course/${id}`}> 
+        <Link to={`/Course/${id}`}> 
           <Button fontFamily={'consolas'}
                   colorScheme='purple'
                   variant={"outline"}
