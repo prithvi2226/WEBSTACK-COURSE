@@ -15,6 +15,7 @@ import PaymentSuccess from './Components/Payments/PaymentSuccess';
 import PaymentFail from './Components/Payments/PaymentFail';
 import NotFound from './Components/Layout/NotFound/NotFound';
 import CoursePage from './Components/CourseDetail/CoursePage';
+import Profile from './Components/Profile/Profile';
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
       <Route path='/PaymentFail' element={<PaymentFail />} />
       <Route path='*' element={<NotFound />} />
       <Route path='/Course/:id' element={<CoursePage />} />
+      <Route path='/Profile' element={<Profile />} />
       
 
 

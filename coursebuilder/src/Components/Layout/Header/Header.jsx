@@ -27,7 +27,7 @@ const Header = () => {
 
   const{isOpen, onOpen, onClose} = useDisclosure();
 
-  const isAuthenticated = false;
+  const isAuthenticated = true;
   
   const user = {
     role: 'admin',
@@ -48,6 +48,7 @@ const Header = () => {
     height={"12"}
     position={"fixed"}
     top={"2"}
+    zIndex={"overlay"}
     left={"2"}
     >
         <RiMenu5Fill />
@@ -77,7 +78,7 @@ const Header = () => {
                 <VStack>
                   <HStack>
                   
-                  <LinkButton url = "/profile" title = "PROFILE" onClick={onClose}></LinkButton>
+                  <LinkButton url = "/Profile" title = "PROFILE" onClick={onClose}></LinkButton>
                   <Button variant={'ghost'} onClick={logoutHandler}>
                     <RiLogoutBoxLine />
                     LOGOUT

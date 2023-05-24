@@ -1,16 +1,32 @@
-import { Box, Grid, Heading, Text } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Grid, Heading, Text, VStack } from '@chakra-ui/react'
+import React, { useState } from 'react'
 import introVideo from "../../Assets/Videos/The Mercedes-AMG G 63_ Stronger Than Time.mp4"
 import Header from '../Layout/Header/Header'
 
 const CoursePage = () => {
 
-    const LectureNumber = 0;
+    const [LectureNumber, setLectureNumber] = useState(0);
 
     const lectures = [
         {
             _id: 'sada',
             title: 'sample',
+            description: 'GAME Up boy',
+            video: {
+                url: 'sads',
+            },
+        },
+        {
+            _id: 'sada2',
+            title: 'sample2',
+            description: 'GAME Up boy',
+            video: {
+                url: 'sads',
+            },
+        },
+        {
+            _id: 'sada3',
+            title: 'sample3',
             description: 'GAME Up boy',
             video: {
                 url: 'sads',
@@ -24,7 +40,7 @@ const CoursePage = () => {
 
           <Box>
             <video
-                width={"100%"}
+                width={"90%"}
                 controls
                 controlsList="nodownload  noremoteplayback"
                 disableRemotePlayback
@@ -39,9 +55,28 @@ const CoursePage = () => {
             
             <Text m={"4"} children={lectures[LectureNumber].description} />
 
-            
-
           </Box>
+
+          <VStack>
+            {
+                lectures.map((item, index)=>(
+                    <button key={item._id}
+                            onClick={() => setLectureNumber(index)}
+                            style={{
+                                width: "100%",
+                                padding: "1rem",
+                                textAlign: "center",
+                                margin: 0,
+                                borderBottom: '1px solid rgba(0, 0, 0, 0.2)',    
+                                marginLeft: "-50px"
+                            }}>
+                        <Text noOfLines={1}>
+                            #{index + 1} {item.title}
+                        </Text>
+                    </button>
+                ))
+            }
+          </VStack>
 
       </Grid></>
   )
