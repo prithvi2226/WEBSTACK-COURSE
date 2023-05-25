@@ -18,6 +18,10 @@ import CoursePage from './Components/CourseDetail/CoursePage';
 import Profile from './Components/Profile/Profile';
 import ChangPassword from './Components/Profile/ChangPassword';
 import UpdateProfile from './Components/Profile/UpdateProfile';
+import Dashboard from './Components/Admin/Dashboard/Dashboard';
+import AdminCourses from './Components/Admin/AdminCourses/AdminCourses';
+import CreateCourse from './Components/Admin/CreateCourse/CreateCourse';
+import Users from './Components/Admin/Users/Users';
 
 function App() {
 
@@ -47,9 +51,12 @@ function App() {
       <Route path='/ChangePassword' element={<ChangPassword />} />
       <Route path='/UpdateProfile' element={<UpdateProfile />} />
 
+      {/* ADMIN ROUTES */}
+      <Route path='/Admin/Dashboard' element={<Dashboard />} />
+      <Route path='/Admin/AdminCourses' element={<AdminCourses />} />
+      <Route path='/Admin/CreateCourse' element={<CreateCourse />} />
+      <Route path='/Admin/Users' element={<Users />} />
       
-
-
 
     </Routes>
 
