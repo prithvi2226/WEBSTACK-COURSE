@@ -4,6 +4,8 @@ import Header from '../../Layout/Header/Header'
 import cursor from '../../../Assets/Images/cursor.png'
 import Sidebar from "../Sidebar"
 import { RiArrowDownLine, RiArrowUpLine } from 'react-icons/ri'
+import { DoughnutChart, LineChart } from './Chart'
+
 
 const Databox = ({title, qty, qtyPercentage, profit}) =>(
   <Box w={["full", "20%"]}
@@ -102,10 +104,11 @@ const Dashboard = () => {
                       size={"md"}
                       children={"Views Graph"}
                       pt={['8', '0']}
-                      ml={['0', '16']}>
+                      ml={['0', '16']} />
 
-              {/* LLine Graph here*/}
-            </Heading>
+            {/* LLine Graph here*/}
+            <LineChart />
+
           </Box>
 
           <Grid templateColumns={["1fr", "2fr 1fr"]}>
@@ -132,7 +135,9 @@ const Dashboard = () => {
                         mb={'4'}
                         children="Users" />
 
-                {/* Donut Graph */}
+              {/* Donut Graph */}
+              <DoughnutChart />
+
 
             </Box>
 
