@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../../Layout/Header/Header'
-import { Box, Button, Grid, Heading, HStack, Image, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
+import { Box, Button, Grid, Heading, HStack, Image, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
 import Sidebar from '../Sidebar'
 import cursor from '../../../Assets/Images/cursor.png'
 import { RiDeleteBin4Fill } from 'react-icons/ri'
+import CourseModal from './CourseModal'
 
 
 const AdminCourses = () => {
@@ -20,14 +21,26 @@ const AdminCourses = () => {
     numOfVideos: 12,
   }]
 
+  const { isOpen, onClose, onOpen } = useDisclosure();
+
 
   const courseDetailsHandler= userId =>{
-    console.log(userId);
+    onOpen();   
   };
 
   const deleteButtonHandler= userId =>{
     console.log(userId);
   };
+
+  const deleteLectureButtonHandler= (courseID, lectureID) =>{
+    console.log(courseID);
+    console.log(lectureID);
+  };
+
+  const addLectureHandler = (e, courseID, title, description) =>{
+    e.preventDefault();
+  };
+
 
 
   return (
@@ -82,6 +95,14 @@ const AdminCourses = () => {
         </Table>
 
         </TableContainer>
+        {/* MODAL */}
+
+        <CourseModal isOpen={isOpen} 
+                     onClose={onClose} 
+                     id = {"PPOp"}
+                     courseTitle = "AWS COURSE"
+                     deleteButtonHandler = {deleteLectureButtonHandler}
+                     addLectureHandler={addLectureHandler} />
 
       </Box>
 
