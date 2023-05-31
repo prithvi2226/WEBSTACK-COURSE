@@ -1,10 +1,10 @@
 import { catchAsyncError } from "../middlewares/catchAsyncError.js"
-import { Course } from "../models/Course.js"    
+import  Course  from "../models/Course.js"    
 import ErrorHandler from "../utils/errorHandler.js"
 
 
 export const getAllCourses = catchAsyncError( async(req, res, next) => {
-    const courses = await Course.find();
+    const courses = await Course.find().select("-lectures");
     res.status(200).json({
         success: true,
         courses,
@@ -19,7 +19,7 @@ export const createCourse = catchAsyncError( async(req, res, next) => {
         return next(new ErrorHandler("Please Add All The Fields", 400))
     }
 
-    const file = req.file;
+    // const file = req.file;
 
     await Course.create({
         title, 
