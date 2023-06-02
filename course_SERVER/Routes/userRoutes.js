@@ -1,5 +1,13 @@
 import express from "express"
-import { changePassword, getMyProfile, login, logout, register, updateProfile, updateProfilePicture } from "../controllers/userController.js";
+import { changePassword, 
+         forgotPassword, 
+         getMyProfile, 
+         login,
+         logout, 
+         register, 
+         resetPassword, 
+         updateProfile, 
+         updateProfilePicture } from "../controllers/userController.js";
 import { isAuthenticated } from "../middlewares/auth.js";
 
 const router = express.Router();
@@ -24,6 +32,14 @@ router.route("/update").put(isAuthenticated, updateProfile);
 
 //update profile picture
 router.route("/updatepic").put(isAuthenticated, updateProfilePicture);
+
+
+//forget password
+router.route("/forgotpassword").post(forgotPassword);
+
+//reset password
+router.route("/resetpassword/:token").put(resetPassword);
+
 
 
 export default router;
