@@ -1,5 +1,7 @@
 import express from "express"
-import { changePassword, 
+import { addToPlaylist, 
+         changePassword, 
+         deleteFromPlaylist, 
          forgotPassword, 
          getMyProfile, 
          login,
@@ -40,6 +42,10 @@ router.route("/forgotpassword").post(forgotPassword);
 //reset password
 router.route("/resetpassword/:token").put(resetPassword);
 
+//AddtoPlaylist
+router.route("/addtoplaylist").post(isAuthenticated, addToPlaylist);
 
+//Remove from Playlist
+router.route("/removefromplaylist").delete(isAuthenticated, deleteFromPlaylist);
 
 export default router;

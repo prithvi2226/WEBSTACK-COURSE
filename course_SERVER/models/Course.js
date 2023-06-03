@@ -1,4 +1,7 @@
 import mongoose from "mongoose";
+import { config } from "dotenv";
+
+config();
 
 const schema = new mongoose.Schema({
   title: {
@@ -66,6 +69,6 @@ const schema = new mongoose.Schema({
   },
 });
 
-const Course = mongoose.model("Course", schema);
+const Course = mongoose.model('Course', schema);
 
 export default Course;
