@@ -1,5 +1,5 @@
 import express from "express"
-import { addToPlaylist, 
+import { DeleteMyProfile, DeleteUser, addToPlaylist, 
          changePassword, 
          deleteFromPlaylist, 
          forgotPassword, 
@@ -29,6 +29,9 @@ router.route("/logout").get(logout);
 //Create Profile
 router.route("/me").get(isAuthenticated, getMyProfile);
 
+//Delete Profile
+router.route("/me").delete(isAuthenticated, DeleteMyProfile);
+
 //Change Password
 router.route("/changepassword").put(isAuthenticated, changePassword);
 
@@ -56,7 +59,8 @@ router.route("/removefromplaylist").delete(isAuthenticated, deleteFromPlaylist);
 router.route("/admin/users").get(isAuthenticated, authorizeAdmin, getAllUsers);
 
 //Update User ROle
-router.route("/admin/users/:id").put(isAuthenticated, authorizeAdmin, updateUserRole);
+router.route("/admin/users/:id").put(isAuthenticated, authorizeAdmin, updateUserRole)
+.delete(isAuthenticated, authorizeAdmin, DeleteUser);
 
 
 export default router;

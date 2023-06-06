@@ -295,3 +295,41 @@ export const updateUserRole = catchAsyncError(async (req, res, next) => {
     message: "ROle Changed",
   });
 });
+
+
+export const DeleteUser = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    return next(new ErrorHandler("User Not found", 404));
+  }
+
+  await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+
+  //Cancel Subscription
+
+  await user.deleteOne();
+
+  res.status(200).json({
+    success: true,
+    message: "User Deleted!",
+  });
+});
+
+
+export const DeleteMyProfile = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
+
+  await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+
+  //Cancel Subscription
+
+  await user.deleteOne();
+
+  res.status(200).cookie("token", null, {
+    expires: new Date(Date.now()),
+  }).json({
+    success: true,
+    message: "User Deleted!",
+  });
+});
