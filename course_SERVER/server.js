@@ -1,7 +1,7 @@
 import app from "./app.js";
 import { connectDB } from "./config/database.js";
 import cloudinary from "cloudinary";
-import RazorPay from "react-native-razorpay"
+import RazorPay from "razorpay";
 
 connectDB();
 
