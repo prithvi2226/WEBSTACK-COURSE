@@ -71,3 +71,43 @@ export const getRazorPayKey =  catchAsyncError(async(req, res, next)=>{
         key: process.env.RAZORPAY_API_KEY
     })
 })
+
+
+export const cancelSubscription =  catchAsyncError(async(req, res, next)=>{
+
+    const user = await User.findById(req.user._id);
+
+    const subscriptionId = user.subscription.id;
+
+    let refund = false;
+
+    await instance.subscriptions.cancel(subscriptionId);
+
+
+    const payment = await Payment.findOne({
+        razorpay_payment_id: subscriptionId,
+    })
+
+    const gap = Date.now()-payment.createdAt;
+
+    const refundTime = process.env.REFUND_DAYS * 24*60*60*1000
+
+    if(refundTime > gap){
+        //await instance.payments.refund(payment.razorpay_payment_id);
+        refund = true;
+    }
+
+    await payment.deleteOne();
+
+    user.subscription.id = undefined;
+    user.subscription.status = undefined;
+
+    await user.save();
+
+    res.status(200).json({
+        success: true,
+        message: refund ? 
+            "Subscription has been cancelled, You will be receiving the refund the Next 7 Days!" :
+            "Subscription Cancelled and You are not eligible for refund as per guidelines"
+    })
+})
