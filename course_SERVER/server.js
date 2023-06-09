@@ -29,3 +29,6 @@ nodeCron.schedule("0 0 1 * * *",async ()=>{
 app.listen(process.env.PORT,()=>{
     console.log(`SERVER IS UP ON PORT: ${process.env.PORT}`)
 })
+
+
+
