@@ -10,7 +10,9 @@ config({
 
 const app = express();
 
-app.get("/", (req, res)=>res.send(`<h1> SITE IS WORKING, CLICK <a href=${process.env.FRONTEND_URL}>HERE </a> TO VIST FRONTEND </h1>`))
+app.get("/", (req, res)=>{
+  res.send(`<h1> SITE IS WORKING, CLICK <a href=${process.env.FRONTEND_URL}>HERE </a> TO VIST FRONTEND </h1>`)
+})
 
 // Using middlewares
 app.use(express.json()); // Invoke the express.json() middleware to parse JSON data
