@@ -24,7 +24,6 @@
     "node-cron": "^3.0.2",
     "nodemailer": "^6.9.3",
     "razorpay": "^2.8.6",
-    "react-native-razorpay": "^2.3.0",
     "validator": "^13.9.0"
   }
 }
