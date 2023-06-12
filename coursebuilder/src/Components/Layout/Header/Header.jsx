@@ -13,6 +13,7 @@ import {RiDashboardFill, RiLogoutBoxLine, RiMenu5Fill} from "react-icons/ri";
 
 
 
+
 const LinkButton = ({url = '/', title = 'Home', onClose}) => (
   <Link onClick={onClose}  to={url}>
     <Button variant={'ghost'}>
@@ -23,15 +24,9 @@ const LinkButton = ({url = '/', title = 'Home', onClose}) => (
 
 );
 
-const Header = () => {
+const Header = ({isAuthenticated = false, user}) => {
 
   const{isOpen, onOpen, onClose} = useDisclosure();
-
-  const isAuthenticated = true;
-  
-  const user = {
-    role: 'admin',
-  }
 
   const logoutHandler = () => {
     console.log("Logout");

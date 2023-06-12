@@ -9,4 +9,4 @@ const store = configureStore({
 });
 
 export default store;
-export const server = 'https://course-bundler1.herokuapp.com/api/v1/'
+export const server = 'https://course-bundler1.herokuapp.com/api/v1'

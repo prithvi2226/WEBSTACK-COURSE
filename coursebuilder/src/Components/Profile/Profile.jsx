@@ -1,6 +1,5 @@
 import { Avatar, Button, Container, HStack, Heading, Image, Stack, Text, VStack, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, Input, ModalFooter, useDisclosure, ModalHeader } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import Header from '../Layout/Header/Header'
 import { Link } from 'react-router-dom'
 import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCss } from '../Auth/Register'
@@ -35,7 +34,7 @@ const Profile = () => {
     const {isOpen, onClose, onOpen} = useDisclosure();
 
   return (
-    <><Header />
+
     <Container minH={"95vh"}
                maxW={"container.lg"}
                py={"8"}>
@@ -164,7 +163,7 @@ const Profile = () => {
                         changeImageSubmitHandler={changeImageSubmitHandler}/>
 
     </Container>
-    </>
+    
   )
 }
 

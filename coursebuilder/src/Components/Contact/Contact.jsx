@@ -1,7 +1,7 @@
 import { Container, Heading, VStack, Box, Button, Input, HStack, FormLabel, Textarea } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
-import Header from '../Layout/Header/Header';
+
 
 const Contact = () => {
 
@@ -10,7 +10,7 @@ const Contact = () => {
     const [message, setMessage] = useState("");
 
   return (
-    <><Header /><Container h={"92vh"}>
+    <Container h={"92vh"}>
       <VStack h={"full"} justifyContent={"center"} spacing={"16"}>
         <Heading children="CONTACT US" />
         <form style={{ width: '100%' }}>
@@ -68,7 +68,7 @@ const Contact = () => {
         </form>
       </VStack>
 
-    </Container></>
+    </Container>
   )
 }
 

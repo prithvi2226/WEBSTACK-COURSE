@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import React from 'react';
-import Header from '../Layout/Header/Header';
 import { Button, Container, HStack, Heading, Image, Input, Stack, Text, VStack } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
@@ -86,7 +85,7 @@ const Main = () => {
   ]
 
   return (
-    <><Header />
+    
     
     <Container minH={'95vh'} maxW={"container.lg"} paddingY={'8'}>
       <Heading children="ALL THE CONTENT" m={'8'} />
@@ -128,7 +127,7 @@ const Main = () => {
         </HStack>
       
 
-    </Container></>
+    </Container>
     
   );
 };

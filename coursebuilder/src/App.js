@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from './Components/Home';
 import Main from './Components/MAINS/Main';
@@ -22,6 +22,11 @@ import Dashboard from './Components/Admin/Dashboard/Dashboard';
 import AdminCourses from './Components/Admin/AdminCourses/AdminCourses';
 import CreateCourse from './Components/Admin/CreateCourse/CreateCourse';
 import Users from './Components/Admin/Users/Users';
+import Header from './Components/Layout/Header/Header';
+import { useDispatch, useSelector } from 'react-redux';
+import toast, {Toaster} from 'react-hot-toast'
+import { loadUser } from './REDUX/actions/user';
+
 
 function App() {
 
@@ -29,8 +34,30 @@ function App() {
     e.preventDefault()
   })
 
+  const {isAuthenticated, user, error, message} = useSelector(state=>state.user);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if(error){
+      toast.error(error);
+      dispatch({type: 'clearError'})
+    }
+    if(message){
+      toast.error(message);
+      dispatch({type: 'clearMessage'})
+    }
+  }, [dispatch, error, message]);
+
+  useEffect(() => {
+    dispatch(loadUser());
+    
+  }, [dispatch]);
+  
+  
+
   return (
   <Router>
+    <Header isAuthenticated={isAuthenticated} user={user} />
     <Routes>
       <Route path = "/" element = {<Home />} />
       <Route path="/Main" element={<Main />} />
@@ -61,6 +88,8 @@ function App() {
     </Routes>
 
     <Footer />
+
+    <Toaster />
 
   </Router> 
   );

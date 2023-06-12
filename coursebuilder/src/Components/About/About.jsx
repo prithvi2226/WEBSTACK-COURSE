@@ -2,7 +2,7 @@ import { Avatar, Container, Heading, Stack, VStack, Text, Button, HStack } from 
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {RiSecurePaymentFill} from 'react-icons/ri'
-import Header from '../Layout/Header/Header'
+
 // import introVideo from "../../Assets/Videos/The Mercedes-AMG G 63_ Stronger Than Time.mp4"
 // import termsandCondition from "../../Assets/DOCS/termsandCondtion"
 
@@ -65,7 +65,7 @@ const Founder = () => (
 
 const About = () => {
   return (
-    <><Header />
+    
     <Container maxW={"container.lg"}
       padding={"16"}
       boxShadow={'lg'}
@@ -100,7 +100,7 @@ const About = () => {
           textTransform={"uppercase"} />
       </HStack>
 
-    </Container></>
+    </Container>
   )
 }
 

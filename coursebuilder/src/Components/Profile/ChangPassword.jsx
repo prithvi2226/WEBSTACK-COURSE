@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Header from '../Layout/Header/Header'
 import { Button, Container, Heading, Input, VStack } from '@chakra-ui/react'
 
 const ChangPassword = () => {
@@ -8,8 +7,7 @@ const ChangPassword = () => {
     const [NewPassword, setNewPassword] = useState("");
 
   return (
-    <>
-    <Header />
+    
     <Container minH={"90vh"}
                 py={"16"}>
         <form>
@@ -44,7 +42,7 @@ const ChangPassword = () => {
         </form>
 
     </Container>
-    </>
+    
 
   )
 }

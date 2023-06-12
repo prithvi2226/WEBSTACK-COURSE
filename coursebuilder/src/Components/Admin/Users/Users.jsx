@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../../Layout/Header/Header'
 import { Box, Button, Grid, Heading, HStack, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 import Sidebar from '../Sidebar'
 import cursor from '../../../Assets/Images/cursor.png'
@@ -29,8 +28,7 @@ const Users = () => {
 
 
   return (
-    <>
-    <Header />
+    
     <Grid minH={"100vh"}
       templateColumns={['1fr', '5fr 1fr']}
       css={{cursor: `url(${cursor}), default`, }}>
@@ -84,7 +82,6 @@ const Users = () => {
       <Sidebar />
 
     </Grid>
-    </>
   )
 }
 
