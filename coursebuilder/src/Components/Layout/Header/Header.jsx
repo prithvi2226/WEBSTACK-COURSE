@@ -10,6 +10,8 @@ import {Button,
         VStack,
         useDisclosure} from "@chakra-ui/react";
 import {RiDashboardFill, RiLogoutBoxLine, RiMenu5Fill} from "react-icons/ri";
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../REDUX/actions/user';
 
 
 
@@ -28,9 +30,11 @@ const Header = ({isAuthenticated = false, user}) => {
 
   const{isOpen, onOpen, onClose} = useDisclosure();
 
+  const dispatch = useDispatch();
+
   const logoutHandler = () => {
-    console.log("Logout");
     onClose();
+    dispatch(logout());
   }
 
   return (

@@ -1,6 +1,8 @@
 import { Avatar, Box, Button, Container, FormLabel, HStack, Heading, Input, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { register } from '../../REDUX/actions/user';
 
 export const fileUploadCss = {
 
@@ -25,6 +27,8 @@ const Register = () => {
     const [imagePrev, setImagePrev] = useState('');
     const [image, setImage] = useState('');
 
+    const dispatch = useDispatch();
+
     const changeImageHandler = (e) => {
       
       const file = e.target.files[0];
@@ -38,21 +42,33 @@ const Register = () => {
       }
 
     }
+
+    const submitHandler = (e)=>{
+      e.preventDefault();
+      const myForm = new FormData();
+
+      myForm.append("name", name);
+      myForm.append("email", email);
+      myForm.append("password", password);
+      myForm.append("file", image);
+
+      dispatch(register(myForm));
+    }
   return (
-    <Container h = {'95vh'}>
-        <VStack h={'full'} justifyContent={"center"} spacing={'16'}>
+    <Container h = {'110vh'}>
+        <VStack h={'fit-content'} justifyContent={"center"} spacing={'16'}>
             <Heading textTransform={'uppercase'} children={"WELCOME TO THE PRI EXPERIENCE"} />
 
-            <Box justifyContent={"center"} display={"flex"} my={"0.0000001"} >
+            <Box justifyContent={"center"} display={"flex"} my={"0.000001"} >
               <Avatar my={"0.0000001"} 
                       size={"2xl"} 
                       src={imagePrev}
                        />
             </Box>
 
-            <form style={{width: '100%'}}>
+            <form onSubmit={submitHandler} style={{width: '100%'}}>
                       
-            <Box my={"2"}>
+            <Box my={"1"}>
               <FormLabel htmlFor = "name" children="Name" />
               <Input required id="name" 
                      value={name} 

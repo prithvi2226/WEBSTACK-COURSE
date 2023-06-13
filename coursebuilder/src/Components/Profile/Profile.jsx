@@ -4,23 +4,7 @@ import { Link } from 'react-router-dom'
 import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCss } from '../Auth/Register'
 
-const Profile = () => {
-
-    const User = {
-        name: "Prithvi",
-        email: "pri@gmail.com",
-        createdAt: String(new Date().toISOString()),
-        role: 'User',
-        subscription: {
-            status: "active",
-        },
-        playlist: [
-            {
-                course: "AWS",
-                poster: "https://logowik.com/content/uploads/images/aws.jpg",
-            },
-        ]
-    }
+const Profile = ({user}) => {
 
     const removeFromPlaylistHandler = id => {
         console.log(id);
@@ -49,7 +33,7 @@ const Profile = () => {
                 padding={"8"}>
             
             <VStack>
-                <Avatar boxSize={"48"}/>
+                <Avatar boxSize={"48"} src={user.avatar.url} />
 
                 <Button colorScheme={"purple"}
                         variant={"outline"}
@@ -65,22 +49,22 @@ const Profile = () => {
                 
                 <HStack>
                     <Text children={"Name:"} fontWeight={'bold'}/>
-                    <Text children={User.name} />
+                    <Text children={user.name} />
                 </HStack>{' '}
                 <HStack>
                     <Text children={"Email:"} fontWeight={'bold'}/>
-                    <Text children={User.email} />
+                    <Text children={user.email} />
                 </HStack>
                 <HStack>
                     <Text children={"Created Date:"} fontWeight={'bold'}/>
-                    <Text children={User.createdAt.split("T")[0]} />
+                    <Text children={user.createdAt.split("T")[0]} />
                 </HStack>
 
                 {
-                    User.role !== "admin" && (
+                    user.role !== "admin" && (
                     <HStack>
                         <Text children="Subscription:" fontWeight={'bold'} />
-                        {User.subscription.status === "active"?(
+                        {user.subscription && user.subscription.status === "active"?(
                             <Button> 
                                 Cancel Subscription
                             </Button>
@@ -120,7 +104,7 @@ const Profile = () => {
         <Heading children={"Playlist"} size={"md"} my={"8"} />
 
         {
-            User.playlist.length > 0 && (
+            user.playlist.length > 0 && (
                 <Stack justifyContent={"flex-start"}
                         direction={["column", "row"]}
                         alignItems={"center"}
@@ -129,7 +113,7 @@ const Profile = () => {
                         flexWrap={"wrap"}>
 
                     {
-                        User.playlist.map((element)=>(
+                        user.playlist.map((element)=>(
                             <VStack w={"48"}
                                     m={"2"}
                                     key={element.course} >
