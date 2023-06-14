@@ -1,15 +1,33 @@
 import { Button, Container, Heading, Input, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
+import { updateProfile } from '../../REDUX/actions/profile';
+import { loadUser } from '../../REDUX/actions/user';
+import { useNavigate } from 'react-router-dom';
 
-const UpdateProfile = () => {
+const UpdateProfile = ({user}) => {
 
-    const [Name, setName] = useState("");
-    const [Email, setEmail] = useState("");
+    const [Name, setName] = useState(user.name);
+    const [Email, setEmail] = useState(user.email);
+
+    const dispatch = useDispatch()
+
+    // const {loading} = useSelector(state=>state.profile)
+
+    const navigate = useNavigate();
+    
+    const submitHandler = async e=>{
+      e.preventDefault();
+
+      await dispatch(updateProfile(Name, Email));
+      dispatch(loadUser());
+      navigate('/Profile');
+    }
 
   return (
     <Container minH={"90vh"}
                 py={"16"}>
-        <form>
+        <form onSubmit={submitHandler}>
             <Heading children={"UPDATE PROFILE"}
                      my={"16"}
                      textAlign={['center', 'left']}/>

@@ -1,36 +1,66 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Container, Heading, Input, VStack } from '@chakra-ui/react'
+import { changePassword } from '../../REDUX/actions/profile';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-hot-toast';
 
 const ChangPassword = () => {
 
-    const [OldPassword, setOldPassword] = useState("");
-    const [NewPassword, setNewPassword] = useState("");
+    const [oldPassword, setOldPassword] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+
+    const dispatch = useDispatch();
+
+    const submitHandler = (e)=>{
+      e.preventDefault();
+
+      dispatch(changePassword(oldPassword, newPassword));
+    }
+
+    const {loading, message, error} = useSelector(state=>state.profile);
+
+    
+    useEffect(() => {
+      if(error){
+        toast.error(error);
+        dispatch({type: 'clearError'});
+      }
+
+      if(message){
+        toast.success(message);
+        dispatch({type: 'clearMessage'});
+      }
+    }, [dispatch, error, message])
+    
+
+
 
   return (
     
     <Container minH={"90vh"}
                 py={"16"}>
-        <form>
+        <form onSubmit={submitHandler}>
             <Heading children={"CHANGE PASSWORD"}
                      my={"16"}
                      textAlign={['center', 'left']}/>
             <VStack spacing={"8"}>
                 <Input required id="password" 
-                        value={OldPassword} 
+                        value={oldPassword} 
                         onChange={e => setOldPassword(e.target.value)} 
                         placeholder='Old Password'
                         type={'password'}
                         focusBorderColor="purple.500"
                         />
                 <Input required id="password" 
-                        value={NewPassword} 
+                        value={newPassword} 
                         onChange={e => setNewPassword(e.target.value)} 
                         placeholder='New Password'
                         type={'password'}
                         focusBorderColor="purple.500"
                         />
                 
-                <Button w={"full"}
+                <Button isLoading={loading}
+                        w={"full"}
                         colorScheme={'purple'}
                         type='submit'>
                     Change Password

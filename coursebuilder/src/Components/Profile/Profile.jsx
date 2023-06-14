@@ -3,6 +3,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCss } from '../Auth/Register'
+import { updateProfilePicture } from '../../REDUX/actions/profile'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadUser } from '../../REDUX/actions/user'
+import { useEffect } from 'react'
+import { toast } from 'react-hot-toast'
 
 const Profile = ({user}) => {
 
@@ -10,10 +15,31 @@ const Profile = ({user}) => {
         console.log(id);
     };
 
-    const changeImageSubmitHandler = (e, Image) => {
+    const dispatch = useDispatch();
+
+    const {message, error} = useSelector(state=>state.profile);
+
+    const changeImageSubmitHandler = async (e, Image) => {
         e.preventDefault();
-        console.log(Image);
+        const myForm = new FormData();
+  
+        myForm.append("file", Image);
+  
+        await dispatch(updateProfilePicture(myForm));
+        dispatch(loadUser());
     };
+
+    useEffect(() => {
+        if(error){
+          toast.error(error);
+          dispatch({type: 'clearError'});
+        }
+  
+        if(message){
+          toast.success(message);
+          dispatch({type: 'clearMessage'});
+        }
+      }, [dispatch, error, message])
 
     const {isOpen, onClose, onOpen} = useDisclosure();
 

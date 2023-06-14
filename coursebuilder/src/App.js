@@ -60,95 +60,82 @@ function App() {
   return (
   <Router>
     {
-      loading ? (<Loader />) : (
-        <>
-        <Header isAuthenticated={isAuthenticated} user={user} />
-        <Routes>
-          <Route path = "/" element = {<Home />} />
-          <Route path="/Main" element={<Main />} />
+     loading ? (<Loader />) : (
+      
+        <><Header isAuthenticated={isAuthenticated} user={user} />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Main" element={<Main />} />
 
-          <Route path='/Login' element={
-            <ProtectedRoute isAuthenticated={!isAuthenticated} redirect = "/Profile">
-              <Login />
-            </ProtectedRoute>} />
+              <Route path='/Login' element={<ProtectedRoute isAuthenticated={!isAuthenticated} redirect="/Profile">
+                <Login />
+              </ProtectedRoute>} />
 
-          <Route path='/Register' element={
-            <ProtectedRoute isAuthenticated={!isAuthenticated} redirect = "/Profile" >
-              <Register />
-            </ProtectedRoute>} />
+              <Route path='/Register' element={<ProtectedRoute isAuthenticated={!isAuthenticated} redirect="/Profile">
+                <Register />
+              </ProtectedRoute>} />
 
-          <Route path='/ForgotPassword' element={<ForgotPassword />} />
-          <Route path='/ResetPassword/:token' element={<ResetPassword />} />
-          <Route path='/Contact' element={<Contact />} />
-          <Route path='/Request' element={<Request />} />
-          <Route path='/About' element={<About />} />
+              <Route path='/ForgotPassword' element={<ForgotPassword />} />
+              <Route path='/ResetPassword/:token' element={<ResetPassword />} />
+              <Route path='/Contact' element={<Contact />} />
+              <Route path='/Request' element={<Request />} />
+              <Route path='/About' element={<About />} />
 
-          <Route path='/Subscribe' element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <Subscribe />
-            </ProtectedRoute>} />
+              <Route path='/Subscribe' element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Subscribe />
+              </ProtectedRoute>} />
 
-          <Route path='/PaymentSuccess' element={<PaymentSuccess />} />
-          <Route path='/PaymentFail' element={<PaymentFail />} />
-          <Route path='*' element={<NotFound />} />
-          <Route path='/Course/:id' element={<CoursePage />} />
+              <Route path='/PaymentSuccess' element={<PaymentSuccess />} />
+              <Route path='/PaymentFail' element={<PaymentFail />} />
+              <Route path='*' element={<NotFound />} />
+              <Route path='/Course/:id' element={<CoursePage />} />
 
-          <Route path='/Profile' element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <Profile user={user} />
-            </ProtectedRoute>} />
+              <Route path='/Profile' element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+                <Profile user={user} />
+              </ProtectedRoute>} />
 
-          <Route path='/ChangePassword' element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <ChangPassword />
-            </ProtectedRoute>
-          } />
+              <Route path='/ChangePassword' element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+                <ChangPassword />
+              </ProtectedRoute>} />
 
-          <Route path='/UpdateProfile' element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <UpdateProfile />
-            </ProtectedRoute>} />
+              <Route path='/UpdateProfile' element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+                <UpdateProfile user={user} />
+              </ProtectedRoute>} />
 
-          {/* ADMIN ROUTES */}
-          <Route path='/Admin/Dashboard' element={
-            <ProtectedRoute adminRoute={true} 
-                            isAuthenticated={isAuthenticated}                 
-                            isAdmin = {user && user.role === 'admin'}>
-              <Dashboard />
-            </ProtectedRoute>} />
+              {/* ADMIN ROUTES */}
+              <Route path='/Admin/Dashboard' element={<ProtectedRoute adminRoute={true}
+                isAuthenticated={isAuthenticated}
+                isAdmin={user && user.role === 'admin'}>
+                <Dashboard />
+              </ProtectedRoute>} />
 
-          <Route path='/Admin/AdminCourses' element={
-            <ProtectedRoute adminRoute={true} 
-                            isAuthenticated={isAuthenticated}                 
-                            isAdmin = {user && user.role === 'admin'}>
-              <AdminCourses />
-            </ProtectedRoute>} />
+              <Route path='/Admin/AdminCourses' element={<ProtectedRoute adminRoute={true}
+                isAuthenticated={isAuthenticated}
+                isAdmin={user && user.role === 'admin'}>
+                <AdminCourses />
+              </ProtectedRoute>} />
 
-          <Route path='/Admin/CreateCourse' element={
-            <ProtectedRoute adminRoute={true} 
-                            isAuthenticated={isAuthenticated}                 
-                            isAdmin = {user && user.role === 'admin'}>
-              <CreateCourse />
-            </ProtectedRoute>} />
+              <Route path='/Admin/CreateCourse' element={<ProtectedRoute adminRoute={true}
+                isAuthenticated={isAuthenticated}
+                isAdmin={user && user.role === 'admin'}>
+                <CreateCourse />
+              </ProtectedRoute>} />
 
-          <Route path='/Admin/Users' element={
-            <ProtectedRoute adminRoute={true} 
-                            isAuthenticated={isAuthenticated}                 
-                            isAdmin = {user && user.role === 'admin'}>
-              <Users />
-            </ProtectedRoute>} />
+              <Route path='/Admin/Users' element={<ProtectedRoute adminRoute={true}
+                isAuthenticated={isAuthenticated}
+                isAdmin={user && user.role === 'admin'}>
+                <Users />
+              </ProtectedRoute>} />
+
+
+            </Routes>
+
+            <Footer />
+
+            <Toaster />
+          </>)
           
-
-        </Routes>
-
-        <Footer />
-
-        <Toaster />
-
-        </>
-
-      )
-    }    
+          }
   </Router> 
   );
 }
