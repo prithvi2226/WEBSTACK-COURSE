@@ -9,7 +9,7 @@ const ResetPassword = () => {
   const [password, setPassword] = useState('');
   const params = useParams();
 
-  const navigatee = useNavigate();
+  const navigate = useNavigate();
 
   const { loading, message, error } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const ResetPassword = () => {
     if (message) {
       toast.success(message);
       dispatch({ type: 'profile/clearMessage' });
-      navigatee('/Login');
+      navigate('/Login');
     }
   }, [dispatch, error, message]);
 
