@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCourses } from '../../REDUX/actions/course';
 import { toast } from 'react-hot-toast';
+import { addToPlaylist } from '../../REDUX/actions/profile';
+import { loadUser } from '../../REDUX/actions/user';
 
-const Course = ({ views, title, imageSrc, id, addToPlaylistHandler, creator, description, lecture }) => {
+const Course = ({ views, title, imageSrc, id, addToPlaylistHandler, creator, description, lecture, loading }) => {
   return (
     <VStack className="course" alignItems={['center']}>
       <Image src={imageSrc} boxSize={60} objectFit='contain' />
@@ -28,7 +30,11 @@ const Course = ({ views, title, imageSrc, id, addToPlaylistHandler, creator, des
             START
           </Button>
         </Link>
-        <Button fontFamily='consolas' colorScheme='purple' variant='outline' onClick={() => addToPlaylistHandler(id)}>
+        <Button fontFamily='consolas' 
+                colorScheme='purple' 
+                isLoading={loading}
+                variant='outline' 
+                onClick={() => addToPlaylistHandler(id)}>
           ADD TO PLAYLIST
         </Button>
       </Stack>
@@ -41,13 +47,15 @@ const Main = () => {
   const [Category, setCategory] = useState('');
   const dispatch = useDispatch();
 
-  const addToPlaylistHandler = (courseId) => {
-    console.log('Added to Playlist', courseId);
+  const addToPlaylistHandler = async courseId => {
+
+    await dispatch(addToPlaylist(courseId));
+    dispatch(loadUser());
   };
 
   const categories = ["Interview Prep", "INTERVIEW DSA PRACTICE", "AWS"];
 
-  const { loading, courses, error } = useSelector((state) => state.courses);
+  const { loading, courses, error, message } = useSelector((state) => state.courses);
 
   useEffect(() => {
     dispatch(getAllCourses(Category, Keyword));
@@ -56,7 +64,13 @@ const Main = () => {
       toast.error(error);
       dispatch({ type: 'course/clearError' });
     }
-  }, [Category, Keyword, dispatch, error]);
+
+    if (message) {
+      toast.success(message);
+      dispatch({ type: 'course/clearMessage' });
+    }
+
+  }, [Category, Keyword, dispatch, error, message]);
 
   return (
     <Container minH='95vh' maxW='container.lg' paddingY='8'>
@@ -96,6 +110,7 @@ const Main = () => {
               lecture={item.numOfVideos}
               title={item.title}
               addToPlaylistHandler={addToPlaylistHandler}
+              loading={loading}
             />
           )) : <Heading children="COURSE NOT FOUND" fontFamily={'consolas'} />}
       </Stack>

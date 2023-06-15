@@ -68,3 +68,17 @@ export const register = (formdata)=> async(dispatch)=>{
         dispatch({type: 'registerFail', payload: error.response.data.message});
     }
 }
+
+
+export const buySubscriprion = ()=> async(dispatch)=>{
+    try {
+        dispatch({type: 'buySubscriprionRequest'});
+        const {data} = await axios.post(`${server}/subscribe`, {withCredentials: true});
+        console.log(data);
+
+        dispatch({type: 'buySubscriprionSuccess', payload: data.subscriptionId});
+
+    } catch (error) {
+        dispatch({type: 'buySubscriprionFail', payload: error.response.data.message});
+    }
+}

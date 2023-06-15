@@ -119,6 +119,18 @@ export const profileReducer = createReducer({}, {
         state.error = action.payload;
     },
 
+    removeFromPlaylistRequest: (state) => {
+        state.loading = true;
+    },
+    removeFromPlaylistSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+    },
+    removeFromPlaylistFail: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    },
+
     updateProfilePictureRequest: (state) => {
         state.loading = true;
     },
@@ -139,3 +151,27 @@ export const profileReducer = createReducer({}, {
         state.message = null;
     },
 });
+
+
+export const subscriptionReducer = createReducer({}, {
+    buySubscriprionRequest: (state)=>{
+        state.loading = true;
+    },
+    buySubscriprionSuccess: (state, action)=>{
+        state.loading = false;
+        state.subscriptionId = action.payload;
+    },
+    buySubscriprionFail: (state, action)=>{
+        state.loading = false;
+        state.error = action.payload;
+    },
+    
+    clearError: (state) => {
+        state.error = null;
+    },
+    clearMessage: (state) => {
+        state.message = null;
+    },
+})
+
+

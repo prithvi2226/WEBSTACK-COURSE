@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCss } from '../Auth/Register'
-import { updateProfilePicture } from '../../REDUX/actions/profile'
+import { removeFromPlaylist, updateProfilePicture } from '../../REDUX/actions/profile'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadUser } from '../../REDUX/actions/user'
 import { useEffect } from 'react'
@@ -11,13 +11,15 @@ import { toast } from 'react-hot-toast'
 
 const Profile = ({user}) => {
 
-    const removeFromPlaylistHandler = id => {
-        console.log(id);
+    const dispatch = useDispatch();
+    const {loading, message, error} = useSelector(state=>state.profile);
+
+    const removeFromPlaylistHandler = async id => {
+        await dispatch(removeFromPlaylist(id));
+        dispatch(loadUser());
     };
 
-    const dispatch = useDispatch();
-
-    const {message, error} = useSelector(state=>state.profile);
+    
 
     const changeImageSubmitHandler = async (e, Image) => {
         e.preventDefault();
@@ -63,7 +65,8 @@ const Profile = ({user}) => {
 
                 <Button colorScheme={"purple"}
                         variant={"outline"}
-                        onClick={onOpen}>
+                        onClick={onOpen}
+                        isLoading={loading}>
                     
                     Change Display
 
@@ -109,13 +112,13 @@ const Profile = ({user}) => {
                         alignItems={"center"}>
                     
                     <Link to={"/UpdateProfile"}>
-                        <Button colorScheme='purple'>
+                        <Button colorScheme='purple' isLoading={loading}>
                             Update Profile
                         </Button>
                     </Link>
 
                     <Link to={"/ChangePassword"}>
-                        <Button colorScheme='purple'>
+                        <Button colorScheme='purple' isLoading={loading}>
                             Change Password
                         </Button>
                     </Link>
@@ -155,7 +158,8 @@ const Profile = ({user}) => {
                                             WATCH NOW!
                                         </Button>
                                     </Link>
-                                    <Button onClick={()=>removeFromPlaylistHandler(element.course)}>
+                                    <Button isLoading={loading} 
+                                            onClick={()=>removeFromPlaylistHandler(element.course)}>
                                         <RiDeleteBin7Fill />
                                     </Button>
                                 </HStack>
