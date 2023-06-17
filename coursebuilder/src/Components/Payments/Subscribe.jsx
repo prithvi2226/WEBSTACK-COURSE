@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { server } from '../../REDUX/store';
-import { buySubscriprion } from '../../REDUX/actions/user';
+import { buySubscription } from '../../REDUX/actions/user';
 import { toast } from 'react-hot-toast';
 import logo from "../../Assets/Images/logo.png";
 
@@ -18,7 +18,7 @@ const Subscribe = ({user}) => {
     const subscribeHandler = async()=>{
         const {data: { key }} = await axios.get(`${server}/razorpaykey`);
         setKey(key);
-        dispatch(buySubscriprion());
+        dispatch(buySubscription());
     }
 
     useEffect(() => {

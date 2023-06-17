@@ -5,7 +5,7 @@ import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCss } from '../Auth/Register'
 import { removeFromPlaylist, updateProfilePicture } from '../../REDUX/actions/profile'
 import { useDispatch, useSelector } from 'react-redux'
-import { cancelSubscriprion, loadUser } from '../../REDUX/actions/user'
+import { cancelSubscription, loadUser } from '../../REDUX/actions/user'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
@@ -34,8 +34,8 @@ const Profile = ({user}) => {
         dispatch(loadUser());
     };
 
-    const cancelSubscriprionHandler = ()=>{
-        dispatch(cancelSubscriprion());
+    const cancelSubscriptionHandler = ()=>{
+        dispatch(cancelSubscription());
     }
 
     useEffect(() => {
@@ -114,7 +114,7 @@ const Profile = ({user}) => {
                     <HStack>
                         <Text children="Subscription:" fontWeight={'bold'} />
                         {user.subscription && user.subscription.status === "active"?(
-                            <Button onClick={cancelSubscriprionHandler} isLoading={subscriptionLoading}> 
+                            <Button onClick={cancelSubscriptionHandler} isLoading={subscriptionLoading}> 
                                 Cancel Subscription
                             </Button>
                         ) : (

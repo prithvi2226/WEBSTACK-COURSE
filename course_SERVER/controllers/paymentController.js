@@ -85,15 +85,15 @@ export const cancelSubscription =  catchAsyncError(async(req, res, next)=>{
 
 
     const payment = await Payment.findOne({
-        razorpay_payment_id: subscriptionId,
+        razorpay_subscription_id: subscriptionId,
     })
 
-    const gap = Date.now()-payment.createdAt;
+    const gap = Date.now() - payment.createdAt;
 
-    const refundTime = process.env.REFUND_DAYS * 24*60*60*1000
+    const refundTime = process.env.REFUND_DAYS * 24 * 60 * 60 * 1000;
 
     if(refundTime > gap){
-        //await instance.payments.refund(payment.razorpay_payment_id);
+        await instance.payments.refund(payment.razorpay_payment_id);
         refund = true;
     }
 

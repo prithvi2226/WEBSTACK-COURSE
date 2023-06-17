@@ -154,25 +154,25 @@ export const profileReducer = createReducer({}, {
 
 
 export const subscriptionReducer = createReducer({}, {
-    buySubscriprionRequest: (state)=>{
+    buySubscriptionRequest: (state)=>{
         state.loading = true;
     },
-    buySubscriprionSuccess: (state, action)=>{
+    buySubscriptionSuccess: (state, action)=>{
         state.loading = false;
         state.subscriptionId = action.payload;
     },
-    buySubscriprionFail: (state, action)=>{
+    buySubscriptionFail: (state, action)=>{
         state.loading = false;
         state.error = action.payload;
     },
-    cancelSubscriprionRequest: (state)=>{
+    cancelSubscriptionRequest: (state)=>{
         state.loading = true;
     },
-    cancelSubscriprionSuccess: (state, action)=>{
+    cancelSubscriptionSuccess: (state, action)=>{
         state.loading = false;
         state.message = action.payload;
     },
-    cancelSubscriprionFail: (state, action)=>{
+    cancelSubscriptionFail: (state, action)=>{
         state.loading = false;
         state.error = action.payload;
     },

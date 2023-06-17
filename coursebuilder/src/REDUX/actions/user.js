@@ -70,30 +70,30 @@ export const register = (formdata)=> async(dispatch)=>{
 }
 
 
-export const buySubscriprion = ()=> async(dispatch)=>{
+export const buySubscription = ()=> async(dispatch)=>{
     try {
-        dispatch({type: 'buySubscriprionRequest'});
+        dispatch({type: 'buySubscriptionRequest'});
         const {data} = await axios.get(`${server}/subscribe`, {withCredentials: true});
-        console.log(data);
+        
 
-        dispatch({type: 'buySubscriprionSuccess', payload: data.subscriptionId});
+        dispatch({type: 'buySubscriptionSuccess', payload: data.subscriptionId});
 
     } catch (error) {
-        dispatch({type: 'buySubscriprionFail', payload: error.response.data.message});
+        dispatch({type: 'buySubscriptionFail', payload: error.response.data.message});
     }
 }
 
 
 
-export const cancelSubscriprion = ()=> async(dispatch)=>{
+export const cancelSubscription = ()=> async(dispatch)=>{
     try {
-        dispatch({type: 'cancelSubscriprionRequest'});
+        dispatch({type: 'cancelSubscriptionRequest'});
         const {data} = await axios.delete(`${server}/subscribe/cancel`, {withCredentials: true});
-        console.log(data);
 
-        dispatch({type: 'cancelSubscriprionSuccess', payload: data.message});
+
+        dispatch({type: 'cancelSubscriptionSuccess', payload: data.message});
 
     } catch (error) {
-        dispatch({type: 'cancelSubscriprionFail', payload: error.response.data.message});
+        dispatch({type: 'cancelSubscriptionFail', payload: error.response.data.message});
     }
 }
