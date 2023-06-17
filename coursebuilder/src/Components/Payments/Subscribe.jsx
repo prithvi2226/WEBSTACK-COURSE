@@ -1,17 +1,59 @@
 import { Box, Button, Container, Heading, Text, VStack } from '@chakra-ui/react'
 import axios from 'axios';
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { server } from '../../REDUX/store';
+import { buySubscriprion } from '../../REDUX/actions/user';
+import { toast } from 'react-hot-toast';
+import logo from "../../Assets/Images/logo.png";
 
-const Subscribe = () => {
+
+const Subscribe = ({user}) => {
 
     const dispatch = useDispatch();
     const [key, setKey] = useState("");
 
+    const {loading, error, subscriptionId} = useSelector(state=>state.subscription)
+
     const subscribeHandler = async()=>{
-        const {data} = await axios.get(`${server}/razorpaykey`);
+        const {data: { key }} = await axios.get(`${server}/razorpaykey`);
+        setKey(key);
+        dispatch(buySubscriprion());
     }
+
+    useEffect(() => {
+        if(error){
+            toast.error(error);
+            dispatch({type: 'clearError'});
+        }
+
+        if(subscriptionId){
+            const openPopUp = ()=>{
+                const options= {
+                    key,
+                    name: "Prithvi Course",
+                    description: "Get access to all premium content",
+                    image: logo,
+                    subscription_id: subscriptionId,
+                    callback_url: `${server}/paymentverification`,
+                    prefill: {
+                        name: user.name,
+                        email: user.email,
+                        contact: ""
+                    },
+                    notes:{
+                        address: "PRITHV! at Github"
+                    },
+                    theme: "#77367d"                    
+                };
+
+                const razor = new window.Razorpay(options);
+                razor.open();
+            }
+            openPopUp()
+        }
+    }, [dispatch, error, user.name, user.email, key, subscriptionId])
+    
 
   return (
     <Container h={"90vh"} p={"16"}>
@@ -50,7 +92,8 @@ const Subscribe = () => {
                         w={"full"} 
                         variant={"outline"} 
                         colorScheme='purple'
-                        onClick={subscribeHandler}>
+                        onClick={subscribeHandler}
+                        isLoading = {loading} >
                     BUY
                 </Button>
             </Box>

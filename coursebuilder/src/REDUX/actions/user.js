@@ -73,12 +73,27 @@ export const register = (formdata)=> async(dispatch)=>{
 export const buySubscriprion = ()=> async(dispatch)=>{
     try {
         dispatch({type: 'buySubscriprionRequest'});
-        const {data} = await axios.post(`${server}/subscribe`, {withCredentials: true});
+        const {data} = await axios.get(`${server}/subscribe`, {withCredentials: true});
         console.log(data);
 
         dispatch({type: 'buySubscriprionSuccess', payload: data.subscriptionId});
 
     } catch (error) {
         dispatch({type: 'buySubscriprionFail', payload: error.response.data.message});
+    }
+}
+
+
+
+export const cancelSubscriprion = ()=> async(dispatch)=>{
+    try {
+        dispatch({type: 'cancelSubscriprionRequest'});
+        const {data} = await axios.delete(`${server}/subscribe/cancel`, {withCredentials: true});
+        console.log(data);
+
+        dispatch({type: 'cancelSubscriprionSuccess', payload: data.message});
+
+    } catch (error) {
+        dispatch({type: 'cancelSubscriprionFail', payload: error.response.data.message});
     }
 }

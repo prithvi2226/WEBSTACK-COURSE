@@ -5,7 +5,7 @@ import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCss } from '../Auth/Register'
 import { removeFromPlaylist, updateProfilePicture } from '../../REDUX/actions/profile'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadUser } from '../../REDUX/actions/user'
+import { cancelSubscriprion, loadUser } from '../../REDUX/actions/user'
 import { useEffect } from 'react'
 import { toast } from 'react-hot-toast'
 
@@ -13,6 +13,9 @@ const Profile = ({user}) => {
 
     const dispatch = useDispatch();
     const {loading, message, error} = useSelector(state=>state.profile);
+    const {loading: subscriptionLoading, 
+           message: subscriptionMessage, 
+           error: subscriptionError} = useSelector(state=>state.subscription);
 
     const removeFromPlaylistHandler = async id => {
         await dispatch(removeFromPlaylist(id));
@@ -31,6 +34,10 @@ const Profile = ({user}) => {
         dispatch(loadUser());
     };
 
+    const cancelSubscriprionHandler = ()=>{
+        dispatch(cancelSubscriprion());
+    }
+
     useEffect(() => {
         if(error){
           toast.error(error);
@@ -41,9 +48,22 @@ const Profile = ({user}) => {
           toast.success(message);
           dispatch({type: 'clearMessage'});
         }
-      }, [dispatch, error, message])
+
+        if(subscriptionError){
+            toast.error(subscriptionError);
+            dispatch({type: 'clearError'});
+        }
+        if(subscriptionMessage){
+            toast.success(subscriptionMessage);
+            dispatch({type: 'clearMessage'});
+            dispatch(loadUser())
+          }
+
+      }, [dispatch, error, message, subscriptionError, subscriptionMessage])
 
     const {isOpen, onClose, onOpen} = useDisclosure();
+
+    
 
   return (
 
@@ -94,7 +114,7 @@ const Profile = ({user}) => {
                     <HStack>
                         <Text children="Subscription:" fontWeight={'bold'} />
                         {user.subscription && user.subscription.status === "active"?(
-                            <Button> 
+                            <Button onClick={cancelSubscriprionHandler} isLoading={subscriptionLoading}> 
                                 Cancel Subscription
                             </Button>
                         ) : (

@@ -1,8 +1,11 @@
 import { Box, Button, Container, Heading, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 
 const PaymentSuccess = () => {
+
+    const reference = useSearchParams()[0].get("reference");
+    
   return (
     
     <Container h={"90vh"}
@@ -56,7 +59,7 @@ const PaymentSuccess = () => {
             </Link>
 
             <Heading size={"xs"}>
-                Reference: xxxxx 
+                Reference: {reference}
             </Heading>
 
         </VStack>
