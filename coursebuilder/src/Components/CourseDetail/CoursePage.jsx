@@ -1,51 +1,49 @@
 import { Box, Grid, Heading, Text, VStack } from '@chakra-ui/react'
-import React, { useState } from 'react'
-import introVideo from "../../Assets/Videos/The Mercedes-AMG G 63_ Stronger Than Time.mp4"
-import Header from '../Layout/Header/Header'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Navigate, useParams } from 'react-router-dom'
+import { getCourseLectures } from '../../REDUX/actions/course'
+import Loader from '../Layout/Loader/Loader'
 
-const CoursePage = () => {
+const CoursePage = ({user}) => {
 
     const [LectureNumber, setLectureNumber] = useState(0);
 
-    const lectures = [
-        {
-            _id: 'sada',
-            title: 'sample',
-            description: 'GAME Up boy',
-            video: {
-                url: 'sads',
-            },
-        },
-        {
-            _id: 'sada2',
-            title: 'sample2',
-            description: 'GAME Up boy',
-            video: {
-                url: 'sads',
-            },
-        },
-        {
-            _id: 'sada3',
-            title: 'sample3',
-            description: 'GAME Up boy',
-            video: {
-                url: 'sads',
-            },
-        },
-    ];
+    const {lectures, loading} = useSelector(state=>state.courses)
+ 
+    const dispatch = useDispatch();
+    const params = useParams();
+    
+    useEffect(() => {
+        dispatch(getCourseLectures(params.id))
+    }, [dispatch, params.id])
+
+
+    if(user.role !== "admin" && 
+        (user.subscription === undefined || user.subscription.status !== "active")){
+            return(
+                <Navigate to={"/Subscribe"} />
+            );
+    };
+
+
   return (
-    <> <Header />
-    <Grid minH={"90vh"}
+    
+    loading ? <Loader /> : (
+        <Grid minH={"90vh"}
           templateColumns={["1fr", "3fr 1fr"]}>
 
-          <Box>
+          {
+            lectures && lectures.length > 0 ? (
+                <>
+                <Box>
             <video
                 width={"90%"}
                 controls
                 controlsList="nodownload  noremoteplayback"
                 disableRemotePlayback
                 disablePictureInPicture
-                src={introVideo}>
+                src={lectures[LectureNumber].video.url}>
             </video>
             <Heading m={"4"} 
                     children={`#${LectureNumber + 1} ${lectures[LectureNumber].title}`} />
@@ -78,7 +76,12 @@ const CoursePage = () => {
             }
           </VStack>
 
-      </Grid></>
+                </>
+            ) : <Heading children="LECTURES YET TO BE UPLOADED" fontFamily={"consolas"} fontWeight={"bold"} />
+          }
+      </Grid>
+    )
+    
   )
 }
 

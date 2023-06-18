@@ -14,17 +14,14 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../../REDUX/actions/user';
 
 
-
-
-const LinkButton = ({url = '/', title = 'Home', onClose}) => (
-  <Link onClick={onClose}  to={url}>
-    <Button variant={'ghost'}>
+const LinkButton = ({ url = '/', title = 'Home', onClose }) => (
+  <Link to={url}>
+    <Button variant="ghost" onClick={onClose}>
       {title}
     </Button>
-
   </Link>
-
 );
+
 
 const Header = ({isAuthenticated = false, user}) => {
 
@@ -60,13 +57,13 @@ const Header = ({isAuthenticated = false, user}) => {
         <DrawerBody>
         
           <VStack spacing={"4"} alignItems={"flex-start"}>
-            <LinkButton url = "/MAIN" title = "HOME" onClick={onClose}/>
-            <LinkButton url = "/Leetcode" title = "LEETCODE PRACTICE & OTHERS" onClick={onClose}/>
-            <LinkButton url = "/AWS-Guide" title = "AWS ASSOCIATE ARCHITECT GUIDE" onClick={onClose}/>
-            <LinkButton url = "/InterviewStudy" title = "INTERVIEW PREP" onClick={onClose}/>
+            <LinkButton url = "/MAIN" title = "HOME" onClose={onClose}/>
+            <LinkButton url = "/Leetcode" title = "LEETCODE PRACTICE & OTHERS" onClose={onClose}/>
+            <LinkButton url = "/AWS-Guide" title = "AWS ASSOCIATE ARCHITECT GUIDE" onClose={onClose}/>
+            <LinkButton url = "/InterviewStudy" title = "INTERVIEW PREP" onClose={onClose}/>
             <LinkButton url = "/Contact" title = "FEEDBACK" onClick={onClose}/>
-            <LinkButton url = "/Request" title = "REQUEST A COURSE??" onClick={onClose}/>
-            <LinkButton url = "/About" title = "ABOUT US" onClick={onClose}/>
+            <LinkButton url = "/Request" title = "REQUEST A COURSE??" onClose={onClose}/>
+            <LinkButton url = "/About" title = "ABOUT US" onClose={onClose}/>
 
             <HStack justifyContent={"space-evenly"}
                     position={"absolute"}
@@ -77,7 +74,7 @@ const Header = ({isAuthenticated = false, user}) => {
                 <VStack>
                   <HStack>
                   
-                  <LinkButton url = "/Profile" title = "PROFILE" onClick={onClose}></LinkButton>
+                  <LinkButton url = "/Profile" title = "PROFILE" onClose={onClose}></LinkButton>
                   <Button variant={'ghost'} onClick={logoutHandler}>
                     <RiLogoutBoxLine />
                     LOGOUT
@@ -97,10 +94,10 @@ const Header = ({isAuthenticated = false, user}) => {
                 </>
               ) : (
                 <>
-                  <LinkButton url = "/Login" title = "LOG IN" onClick={onClose}>
+                  <LinkButton url = "/Login" title = "LOG IN" onClose={onClose}>
                   </LinkButton>
 
-                  <LinkButton url = "/register" title="REGISTER" onClick={onClose}>
+                  <LinkButton url = "/register" title="REGISTER" onClose={onClose}>
                   </LinkButton>
                 </>
               )}
