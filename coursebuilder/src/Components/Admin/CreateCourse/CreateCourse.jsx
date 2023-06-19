@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Grid, Heading, VStack, Input, Select, Image, Button } from '@chakra-ui/react'
 import Sidebar from '../Sidebar'
 import cursor from '../../../Assets/Images/cursor.png'
 import { fileUploadCss } from '../../Auth/Register'
+import { createCourse } from '../../../REDUX/actions/admin'
+import { useDispatch, useSelector } from 'react-redux'
+import { toast } from 'react-hot-toast'
 
 
 const categories = [
   "Interview Prep",
   "INTERVIEW DSA PRACTICE",
-  "AWS ASSOCIATES ARCHITECT SAA-C03",
+  "AWS",
 ]
+
 
 const CreateCourse = () => {
 
@@ -35,6 +39,35 @@ const CreateCourse = () => {
 
   }
 
+  const dispatch = useDispatch();
+
+  const {loading, error, message} = useSelector(state=>state.admin)
+
+  const submitHandler =(e) =>{
+    e.preventDefault();
+    const myForm = new FormData();
+
+    myForm.append("title", title);
+    myForm.append("description", description);
+    myForm.append("category", category);
+    myForm.append("createdBy", createdBy);
+    myForm.append("file", image);
+
+    dispatch(createCourse(myForm));
+  }
+
+  useEffect(() => {
+    if(error){
+      toast.error(error);
+      dispatch({type: 'clearError'} );
+    }
+    if(message){
+      toast.success(message);
+      dispatch({type: 'clearMessage'} );
+    }
+  }, [dispatch, error, message])
+  
+
   return (
   
     <Grid minH={"100vh"}
@@ -43,7 +76,7 @@ const CreateCourse = () => {
       
       <Container py={"16"}>
 
-        <form action="">
+        <form action="" onSubmit={submitHandler}>
           <Heading textTransform={'uppercase'}
                     children= "Create Course"
                     my={"16"}
@@ -106,6 +139,7 @@ const CreateCourse = () => {
 
             <Button w={"full"} 
                     colorScheme='purple'
+                    isLoading={loading}
                     type='submit'>
               Create
             </Button>

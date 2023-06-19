@@ -1,34 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { Box, Button, Grid, Heading, HStack, Image, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr, useDisclosure } from '@chakra-ui/react'
 import Sidebar from '../Sidebar'
 import cursor from '../../../Assets/Images/cursor.png'
 import { RiDeleteBin4Fill } from 'react-icons/ri'
 import CourseModal from './CourseModal'
+import { useDispatch, useSelector } from 'react-redux'
+import {getAllCourses, getCourseLectures} from "../../../REDUX/actions/course"
+
 
 
 const AdminCourses = () => {
 
-  const courses=[{
-    _id: "PP",
-    title: "AWS Course",
-    category: "AWS ASSOCIATES ARCHITECT SAA-C03",
-    poster: {
-      url: "https://logowik.com/content/uploads/images/aws.jpg"
-    },
-    createdBy: "Prithv!", 
-    views: 12,
-    numOfVideos: 12,
-  }]
+  const {courses, lectures} = useSelector(state=>state.courses)
+  const dispatch = useDispatch();
+
 
   const { isOpen, onClose, onOpen } = useDisclosure();
 
 
-  const courseDetailsHandler= userId =>{
+  const courseDetailsHandler= courseId =>{
+    dispatch(getCourseLectures(courseId))
     onOpen();   
   };
 
-  const deleteButtonHandler= userId =>{
-    console.log(userId);
+  const deleteButtonHandler= courseId =>{
+    console.log(courseId);
   };
 
   const deleteLectureButtonHandler= (courseID, lectureID) =>{
@@ -39,6 +35,11 @@ const AdminCourses = () => {
   const addLectureHandler = (e, courseID, title, description) =>{
     e.preventDefault();
   };
+
+  useEffect(() => {
+    dispatch(getAllCourses());
+  }, [dispatch]);
+  
 
 
 
@@ -66,7 +67,7 @@ const AdminCourses = () => {
           <Thead>
             <Tr>
               <Th>Id</Th>
-              <Th>Course Image</Th>
+              <Th>Course Preview</Th>
               <Th>Title</Th>
               <Th>Category</Th>
               <Th>Creator</Th>
@@ -80,6 +81,7 @@ const AdminCourses = () => {
           <Tbody>
 
             {
+              
               courses.map(item=>(
                 <Row key={item._id}  
                       item={item}
@@ -99,7 +101,8 @@ const AdminCourses = () => {
                      id = {"PPOp"}
                      courseTitle = "AWS COURSE"
                      deleteButtonHandler = {deleteLectureButtonHandler}
-                     addLectureHandler={addLectureHandler} />
+                     addLectureHandler={addLectureHandler}
+                     lectures={lectures} />
 
       </Box>
 

@@ -70,11 +70,11 @@ const CourseModal = ({isOpen,
                         
                         {
                             lectures.map((item, i)=>(
-                                <VideoCard title= {"AWS Intrduction"}
+                                <VideoCard title= {item.title}
                                     key={i}
-                                    description = {"Introduction to AWS"}
+                                    description = {item.description}
                                     num = {i+1}
-                                    lectureID = {"PPOP"}
+                                    lectureID = {item._id}
                                     courseID = {id}
                                     deleteButtonHandler = {deleteButtonHandler} /> 
                             ))
