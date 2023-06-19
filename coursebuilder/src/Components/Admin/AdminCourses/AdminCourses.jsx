@@ -6,12 +6,17 @@ import { RiDeleteBin4Fill } from 'react-icons/ri'
 import CourseModal from './CourseModal'
 import { useDispatch, useSelector } from 'react-redux'
 import {getAllCourses, getCourseLectures} from "../../../REDUX/actions/course"
+import { deleteCourse } from '../../../REDUX/actions/admin'
+import { toast } from 'react-hot-toast'
 
 
 
 const AdminCourses = () => {
 
   const {courses, lectures} = useSelector(state=>state.courses)
+
+  const {loading, error, message} = useSelector(state=>state.admin)
+
   const dispatch = useDispatch();
 
 
@@ -24,7 +29,7 @@ const AdminCourses = () => {
   };
 
   const deleteButtonHandler= courseId =>{
-    console.log(courseId);
+    dispatch(deleteCourse(courseId));
   };
 
   const deleteLectureButtonHandler= (courseID, lectureID) =>{
@@ -37,8 +42,16 @@ const AdminCourses = () => {
   };
 
   useEffect(() => {
+    if(error){
+      toast.error(error);
+      dispatch({type: 'clearError'} );
+    }
+    if(message){
+      toast.success(message);
+      dispatch({type: 'clearMessage'} );
+    }
     dispatch(getAllCourses());
-  }, [dispatch]);
+  }, [dispatch, message, error]);
   
 
 
@@ -86,7 +99,8 @@ const AdminCourses = () => {
                 <Row key={item._id}  
                       item={item}
                       courseDetailsHandler={courseDetailsHandler}
-                      deleteButtonHandler={deleteButtonHandler} />
+                      deleteButtonHandler={deleteButtonHandler}
+                      loading={loading} />
               ))
             }
             
@@ -102,7 +116,8 @@ const AdminCourses = () => {
                      courseTitle = "AWS COURSE"
                      deleteButtonHandler = {deleteLectureButtonHandler}
                      addLectureHandler={addLectureHandler}
-                     lectures={lectures} />
+                     lectures={lectures}
+                     loading={loading} />
 
       </Box>
 
@@ -115,7 +130,7 @@ const AdminCourses = () => {
 
 export default AdminCourses;
 
-function Row({item, courseDetailsHandler, deleteButtonHandler}){
+function Row({item, courseDetailsHandler, deleteButtonHandler, loading}){
   return (
     <Tr>
       <Td >
@@ -146,12 +161,14 @@ function Row({item, courseDetailsHandler, deleteButtonHandler}){
         <HStack justifyContent={"flex-end"}>
           <Button onClick={()=>courseDetailsHandler(item._id)} 
                   variant={"outline"} 
-                  color={"purple.300"}>
+                  color={"purple.300"}
+                  isLoading={loading}>
             View Lecture
           </Button>
 
           <Button onClick={()=>deleteButtonHandler(item._id)} 
-                  color={"purple"}>
+                  color={"purple"}
+                  isLoading={loading}>
             <RiDeleteBin4Fill />
 
           </Button>

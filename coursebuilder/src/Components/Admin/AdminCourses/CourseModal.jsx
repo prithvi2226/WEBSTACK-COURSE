@@ -9,7 +9,8 @@ const CourseModal = ({isOpen,
                      deleteButtonHandler, 
                      courseTitle,
                      addLectureHandler,
-                     lectures = [1, 2, 3, 4, 5, 6, 7, 8]}) => {
+                     lectures = [],
+                     loading}) => {
 
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -76,7 +77,8 @@ const CourseModal = ({isOpen,
                                     num = {i+1}
                                     lectureID = {item._id}
                                     courseID = {id}
-                                    deleteButtonHandler = {deleteButtonHandler} /> 
+                                    deleteButtonHandler = {deleteButtonHandler}
+                                     /> 
                             ))
                         }
 
@@ -120,7 +122,8 @@ const CourseModal = ({isOpen,
                                 <Button w={'full'}
                                         colorScheme='purple'
                                         type='submit'
-                                        variant={"outline"}>
+                                        variant={"outline"}
+                                        isLoading={loading}>
                                     UPLOAD
                                 </Button>
                             </VStack>
