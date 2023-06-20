@@ -59,6 +59,7 @@ router.route("/removefromplaylist").delete(isAuthenticated, deleteFromPlaylist);
 router.route("/admin/users").get(isAuthenticated, authorizeAdmin, getAllUsers);
 
 //Update User ROle
+//delete User
 router.route("/admin/users/:id").put(isAuthenticated, authorizeAdmin, updateUserRole)
 .delete(isAuthenticated, authorizeAdmin, DeleteUser);
 

@@ -1,30 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Box, Button, Grid, Heading, HStack, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 import Sidebar from '../Sidebar'
 import cursor from '../../../Assets/Images/cursor.png'
 import { RiDeleteBin4Fill } from 'react-icons/ri'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteUser, getAllUsers, UpdateUserRole } from '../../../REDUX/actions/admin'
+import { toast } from 'react-hot-toast'
 
 
 const Users = () => {
 
-  const users=[{
-    _id: "PP",
-    name: "Prithvi",
-    role: "Admin",
-    subscription: {
-      status: "active"
-    },
-    email: "bc@gmail.com", 
-  }]
+  const {users, loading, error, message} = useSelector(state=>state.admin)
+
+  const dispatch = useDispatch();
 
 
   const updateHandler= userId =>{
-    console.log(userId);
+    dispatch(UpdateUserRole(userId));
   };
 
   const deleteButtonHandler= userId =>{
-    console.log(userId);
+    dispatch(deleteUser(userId));
   };
+
+  useEffect(() => {
+    if(error){
+      toast.error(error);
+      dispatch({type: 'clearError'} );
+    }
+    if(message){
+      toast.success(message);
+      dispatch({type: 'clearMessage'} );
+    }
+    dispatch(getAllUsers());
+  }, [dispatch, error, message])
+  
 
 
   return (
@@ -32,8 +42,8 @@ const Users = () => {
     <Grid minH={"100vh"}
       templateColumns={['1fr', '5fr 1fr']}
       css={{cursor: `url(${cursor}), default`, }}>
-      
-      <Box p={["0", "16"]}
+
+            <Box p={["0", "16"]}
             overflowX={"auto"}>
         
         <Heading textTransform={'uppercase'}
@@ -64,11 +74,12 @@ const Users = () => {
           <Tbody>
 
             {
-              users.map(item=>(
+              users && users.map(item=>(
                 <Row key={item._id}  
                       item={item}
                       updateHandler={updateHandler}
-                      deleteButtonHandler={deleteButtonHandler} />
+                      deleteButtonHandler={deleteButtonHandler}
+                      loading={loading} />
               ))
             }
             
@@ -77,8 +88,9 @@ const Users = () => {
 
         </TableContainer>
 
-      </Box>
+      </Box> 
 
+      
       <Sidebar />
 
     </Grid>
@@ -87,7 +99,7 @@ const Users = () => {
 
 export default Users
 
-function Row({item, updateHandler, deleteButtonHandler}){
+function Row({item, updateHandler, deleteButtonHandler, loading}){
   return (
     <Tr>
       <Td >
@@ -103,19 +115,21 @@ function Row({item, updateHandler, deleteButtonHandler}){
         {item.role}
       </Td>
       <Td >
-        {item.subscription.status === "active" ? "Active": "Not Active"}
+        {item.subscription && item.subscription.status === "active" ? "Active": "Not Active"}
       </Td>
 
       <Td isNumeric>
         <HStack justifyContent={"flex-end"}>
           <Button onClick={()=>updateHandler(item._id)} 
                   variant={"outline"} 
-                  color={"purple.300"}>
+                  color={"purple.300"}
+                  isLoading={loading}>
             Change Role
           </Button>
 
           <Button onClick={()=>deleteButtonHandler(item._id)} 
-                  color={"purple"}>
+                  color={"purple"}
+                  isLoading={loading}>
             <RiDeleteBin4Fill />
 
           </Button>
