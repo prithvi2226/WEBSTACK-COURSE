@@ -6,7 +6,7 @@ import { RiDeleteBin4Fill } from 'react-icons/ri'
 import CourseModal from './CourseModal'
 import { useDispatch, useSelector } from 'react-redux'
 import {getAllCourses, getCourseLectures} from "../../../REDUX/actions/course"
-import { addLecture, deleteCourse } from '../../../REDUX/actions/admin'
+import { addLecture, deleteCourse, deleteLecture } from '../../../REDUX/actions/admin'
 import { toast } from 'react-hot-toast'
 
 
@@ -37,9 +37,9 @@ const AdminCourses = () => {
     dispatch(deleteCourse(courseId));
   };
 
-  const deleteLectureButtonHandler= (courseId, lectureId) =>{
-    console.log(courseId);
-    console.log(lectureId);
+  const deleteLectureButtonHandler= async (courseId, lectureId) =>{
+    await dispatch(deleteLecture(courseId, lectureId));
+    dispatch(getCourseLectures(courseId));
   };
 
   const addLectureHandler = async (e, courseId, title, description, video) =>{

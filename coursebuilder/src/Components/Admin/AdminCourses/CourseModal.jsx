@@ -78,6 +78,7 @@ const CourseModal = ({isOpen,
                                     lectureID = {item._id}
                                     courseID = {id}
                                     deleteButtonHandler = {deleteButtonHandler}
+                                    loading={loading}
                                      /> 
                             ))
                         }
@@ -146,7 +147,7 @@ const CourseModal = ({isOpen,
 
 export default CourseModal
 
-function VideoCard({title, description, num, lectureID, courseID, deleteButtonHandler}){
+function VideoCard({title, description, num, lectureID, courseID, deleteButtonHandler, loading}){
     return(
         <Stack direction={["column", "row"]} 
                 my={"8"}
@@ -160,7 +161,9 @@ function VideoCard({title, description, num, lectureID, courseID, deleteButtonHa
                 <Text children={description} />
             </Box>
 
-            <Button color={"purple.400"} onClick={()=>deleteButtonHandler(courseID, lectureID)}>
+            <Button isLoading={loading} 
+                    color={"purple.400"} 
+                    onClick={()=>deleteButtonHandler(courseID, lectureID)}>
                 <RiDeleteBin4Fill />
             </Button>
         </Stack>

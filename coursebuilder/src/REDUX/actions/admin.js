@@ -71,3 +71,26 @@ export const addLecture = (id, formData)=> async dispatch=>{
     }
 };
 
+
+
+export const deleteLecture = (courseId, lectureId)=> async dispatch=>{
+
+    try {
+        dispatch({type: 'deleteLectureRequest'});
+
+        const config =  {
+            withCredentials: true,
+        }
+
+        const {data} = await axios.delete(
+            `${server}/lecture?courseId=${courseId}&lectureId=${lectureId}`, config);
+
+        dispatch({type: 'deleteLectureSuccess', payload: data.message});
+    } catch (error) {
+        dispatch({
+            type: 'deleteLectureFail',
+            payload: error.response.data.message,
+        })
+
+    }
+};
