@@ -44,4 +44,30 @@ export const deleteCourse = (id)=> async dispatch=>{
         })
 
     }
-}
+};
+
+
+
+export const addLecture = (id, formData)=> async dispatch=>{
+
+    try {
+        dispatch({type: 'addLectureRequest'});
+
+        const config =  {
+            headers: {"Content-type": "multipart/form-data"},
+            withCredentials: true,
+        }
+
+
+        const {data} = await axios.post(`${server}/coursedet/${id}`, formData, config);
+
+        dispatch({type: 'addLectureSuccess', payload: data.message});
+    } catch (error) {
+        dispatch({
+            type: 'addLectureFail',
+            payload: error.response.data.message,
+        })
+
+    }
+};
+
