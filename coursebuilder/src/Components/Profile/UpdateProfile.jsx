@@ -5,6 +5,7 @@ import { updateProfile } from '../../REDUX/actions/profile';
 import { loadUser } from '../../REDUX/actions/user';
 import { useNavigate } from 'react-router-dom';
 
+
 const UpdateProfile = ({user}) => {
 
     const [Name, setName] = useState(user.name);
@@ -25,6 +26,7 @@ const UpdateProfile = ({user}) => {
     }
 
   return (
+    
     <Container minH={"90vh"}
                 py={"16"}>
         <form onSubmit={submitHandler}>
