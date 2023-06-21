@@ -16,7 +16,7 @@ import Helmet from 'react-helmet';
 const Home = () => {
   return (
     
-    <><Helmet bodyAttributes={{ style: 'background-color : #321C42' }} />
+    <><Helmet bodyAttributes={{ style: 'background-color : #1A202C' }} />
     <section className='home'>
           <div className='container'>
               <Stack

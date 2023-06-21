@@ -54,7 +54,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <><Helmet bodyAttributes={{ style: 'background-color : #2D2D63' }} /><Router>
+    <><Helmet bodyAttributes={{ style: 'background-color : #1A202C' }} /><Router>
       {loading ? (
         <Loader />
       ) : (

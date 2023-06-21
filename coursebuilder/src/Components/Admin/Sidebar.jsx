@@ -2,23 +2,24 @@ import { Button, VStack } from '@chakra-ui/react'
 import React from 'react'
 import { RiAddBoxLine, RiDashboard2Fill, RiEye2Fill, RiUser2Fill } from 'react-icons/ri'
 import { Link, useLocation } from 'react-router-dom'
+import Helmet from 'react-helmet';
 
 const Sidebar = () => {
     
     const Location = useLocation();
   return (
 
-    <VStack spacing={'8'}
-            p={"16"}
-            boxShadow={"-2px 0 10px rgba(107, 70, 193, 0.5)"}>
-        
-        <LinkButton Icon={RiDashboard2Fill} text={"Dashboard"} url={"Dashboard"} active={Location.pathname === "/Admin/Dashboard"} />
-        <LinkButton Icon={RiAddBoxLine} text={"Create Course"} url={"CreateCourse"} active={Location.pathname === "/Admin/CreateCourse"}/>
-        <LinkButton Icon={RiEye2Fill} text={"All Courses"} url={"AdminCourses"} active={Location.pathname === "/Admin/AdminCourses"}/>
-        <LinkButton Icon={RiUser2Fill} text={"Users"} url={"Users"}  active={Location.pathname === "/Admin/Users"}/>        
-        
+    <><Helmet bodyAttributes={{ style: 'background-color : #1A202C' }} /><VStack spacing={'8'}
+          p={"16"}
+          boxShadow={"-2px 0 10px rgba(107, 70, 193, 0.5)"}>
 
-    </VStack>
+          <LinkButton Icon={RiDashboard2Fill} text={"Dashboard"} url={"Dashboard"} active={Location.pathname === "/Admin/Dashboard"} />
+          <LinkButton Icon={RiAddBoxLine} text={"Create Course"} url={"CreateCourse"} active={Location.pathname === "/Admin/CreateCourse"} />
+          <LinkButton Icon={RiEye2Fill} text={"All Courses"} url={"AdminCourses"} active={Location.pathname === "/Admin/AdminCourses"} />
+          <LinkButton Icon={RiUser2Fill} text={"Users"} url={"Users"} active={Location.pathname === "/Admin/Users"} />
+
+
+      </VStack></>
   )
 }
 
