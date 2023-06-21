@@ -71,9 +71,9 @@ export const getDashboardStats = catchAsyncError(async(req, res, next)=>{
         });        
     }
 
-    const usersCount = statsData[11].users;
-    const subscriptionCount = statsData[11].subscription;
-    const viewsCount = statsData[11].views;
+    const usersCount = statsData[10].users;
+    const subscriptionCount = statsData[10].subscription;
+    const viewsCount = statsData[10].views;
 
 
     let usersProfit = true,
@@ -84,26 +84,26 @@ export const getDashboardStats = catchAsyncError(async(req, res, next)=>{
         viewsPercent = 0,
         subscriptionPercent = 0;
 
-    if(statsData[10].users === 0){
+    if(statsData[9].users === 0){
         usersPercent = usersCount*100;
     }
-    if(statsData[10].subscription === 0){
+    if(statsData[9].subscription === 0){
         subscriptionPercent = subscriptionCount*100;
     }
-    if(statsData[10].views === 0){
+    if(statsData[9].views === 0){
         viewsPercent = viewsCount*100;
     }
 
     else{
         const difference = {
-            users: statsData[11].users - statsData[10].users,
-            subscription: statsData[11].subscription - statsData[10].subscription,
-            views: statsData[11].views - statsData[10].views,
+            users: statsData[10].users - statsData[9].users,
+            subscription: statsData[10].subscription - statsData[9].subscription,
+            views: statsData[10].views - statsData[9].views,
         }
 
-        usersPercent = (difference.users / statsData[10].users) * 100;
-        subscriptionPercent = (difference.subscription / statsData[10].subscription) * 100;
-        viewsPercent = (difference.views / statsData[10].views) * 100;
+        usersPercent = (difference.users / statsData[9].users) * 100;
+        subscriptionPercent = (difference.subscription / statsData[9].subscription) * 100;
+        viewsPercent = (difference.views / statsData[9].views) * 100;
     }
 
     if(usersPercent < 0){

@@ -65,7 +65,7 @@ const AdminCourses = () => {
       dispatch({type: 'clearMessage'} );
     }
     dispatch(getAllCourses());
-  }, [dispatch, message, error]);
+  }, [dispatch, message, error, onClose]);
   
 
 

@@ -161,3 +161,26 @@ export const deleteUser = (id)=> async dispatch=>{
 
     }
 };
+
+
+
+export const getDashboardStats = ()=> async dispatch=>{
+
+    try {
+        dispatch({type: 'getAdminStatsRequest'});
+
+        const config =  {
+            withCredentials: true,
+        }
+
+        const {data} = await axios.get(`${server}/admin/stats`, config);
+
+        dispatch({type: 'getAdminStatsSuccess', payload: data});
+    } catch (error) {
+        dispatch({
+            type: 'getAdminStatsFail',
+            payload: error.response.data.message,
+        })
+
+    }
+};
