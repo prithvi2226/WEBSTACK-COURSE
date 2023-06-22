@@ -35,9 +35,10 @@ const ForgotPassword = () => {
             my={14}
             textTransform="uppercase"
             textAlign="center"
+            color={"antiquewhite"}
           />
 
-          <Text fontFamily="consolas" fontSize="xl">
+          <Text fontFamily="consolas" fontSize="xl" color={"antiquewhite"}>
             TYPE IN YOUR EMAIL
           </Text>
           <Input
@@ -47,6 +48,7 @@ const ForgotPassword = () => {
             placeholder="abc@gmail.com"
             type="email"
             focusBorderColor="purple.500"
+            color={"antiquewhite"}
           />
 
           <Button isLoading={loading} type="submit" width="full" colorScheme="purple">

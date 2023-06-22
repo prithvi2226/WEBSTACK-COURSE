@@ -1,15 +1,14 @@
-import { Button, VStack } from '@chakra-ui/react'
+import { Button, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
 import { RiAddBoxLine, RiDashboard2Fill, RiEye2Fill, RiUser2Fill } from 'react-icons/ri'
 import { Link, useLocation } from 'react-router-dom'
-import Helmet from 'react-helmet';
 
 const Sidebar = () => {
     
     const Location = useLocation();
   return (
 
-    <><Helmet bodyAttributes={{ style: 'background-color : #1A202C' }} /><VStack spacing={'8'}
+    <VStack spacing={'8'}
           p={"16"}
           boxShadow={"-2px 0 10px rgba(107, 70, 193, 0.5)"}>
 
@@ -19,7 +18,7 @@ const Sidebar = () => {
           <LinkButton Icon={RiUser2Fill} text={"Users"} url={"Users"} active={Location.pathname === "/Admin/Users"} />
 
 
-      </VStack></>
+      </VStack>
   )
 }
 
@@ -27,11 +26,11 @@ export default Sidebar
 
 function LinkButton({url, Icon, text, active}) {
     return (
+        
         <Link to={`/Admin/${url}`}>
-            <Button colorScheme={active?"purple":""} fontSize={'larger'} variant={"ghost"}
-                    >
-                <Icon style={{ margin: "4" }}/>
-                {text}
+            <Button colorScheme={active ? "purple" : ""} fontSize={'larger'} variant={"ghost"}>
+                <Icon style={{ margin: "4" }} />
+                <Text color={"antiquewhite"}>{text}</Text>
             </Button>
         </Link>
     )

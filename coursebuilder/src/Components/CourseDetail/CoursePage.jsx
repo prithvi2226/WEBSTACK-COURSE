@@ -46,12 +46,12 @@ const CoursePage = ({user}) => {
                 src={lectures[LectureNumber].video.url}>
             </video>
             <Heading m={"4"} 
-                    children={`#${LectureNumber + 1} ${lectures[LectureNumber].title}`} />
+                    children={`#${LectureNumber + 1} ${lectures[LectureNumber].title}`} color={"antiquewhite"}/>
 
             <Heading m={"4"} 
-                    children={"Description"} />
+                    children={"Description"} color={"antiquewhite"} />
             
-            <Text m={"4"} children={lectures[LectureNumber].description} />
+            <Text m={"4"} children={lectures[LectureNumber].description} color={"antiquewhite"}/>
 
           </Box>
 
@@ -68,7 +68,7 @@ const CoursePage = ({user}) => {
                                 borderBottom: '1px solid rgba(0, 0, 0, 0.2)',    
                                 marginLeft: "-50px"
                             }}>
-                        <Text noOfLines={1}>
+                        <Text noOfLines={1} color={"antiquewhite"}>
                             #{index + 1} {item.title}
                         </Text>
                     </button>
@@ -77,7 +77,7 @@ const CoursePage = ({user}) => {
           </VStack>
 
                 </>
-            ) : <Heading children="LECTURES YET TO BE UPLOADED" fontFamily={"consolas"} fontWeight={"bold"} />
+            ) : <Heading children="LECTURES YET TO BE UPLOADED" fontFamily={"consolas"} fontWeight={"bold"} color={"antiquewhite"} />
           }
       </Grid>
     )

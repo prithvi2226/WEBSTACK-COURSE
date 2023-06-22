@@ -32,7 +32,7 @@ const UpdateProfile = ({user}) => {
         <form onSubmit={submitHandler}>
             <Heading children={"UPDATE PROFILE"}
                      my={"16"}
-                     textAlign={['center', 'left']}/>
+                     textAlign={['center', 'left']} color={"antiquewhite"}/>
             <VStack spacing={"8"}>
                 <Input required
                         value={Name} 
@@ -40,6 +40,7 @@ const UpdateProfile = ({user}) => {
                         placeholder='Name'
                         type={'text'}
                         focusBorderColor="purple.500"
+                        color={"antiquewhite"}
                         />
                 <Input required
                         value={Email} 
@@ -47,6 +48,7 @@ const UpdateProfile = ({user}) => {
                         placeholder='Email'
                         type={'email'}
                         focusBorderColor="purple.500"
+                        color={"antiquewhite"}
                         />
                 
                 

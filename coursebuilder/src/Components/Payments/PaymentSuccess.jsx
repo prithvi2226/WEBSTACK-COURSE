@@ -12,7 +12,7 @@ const PaymentSuccess = () => {
                 p={"16"}>
         
         <Heading my={"8"}
-                textAlign={'center'}>
+                textAlign={'center'} color={"antiquewhite"}>
             CONGRATULATIONS!!
             You Have The Pro Pack {`;)`}
             
@@ -29,7 +29,8 @@ const PaymentSuccess = () => {
                  css={{borderRadius: "8px 8px 0 0"}}>
                 
                 <Text textColor={"Black"}
-                        fontFamily={"consolas"}>
+                        fontFamily={"consolas"} 
+                        color={"antiquewhite"}>
                     PAYMENT SUCCESS
                 </Text>
 
@@ -42,7 +43,8 @@ const PaymentSuccess = () => {
                         spacing={"8"}>
 
                     <Text textColor={"wheat"}
-                          fontFamily={"consolas"}>
+                          fontFamily={"consolas"}
+                          color={"antiquewhite"}>
                         Congratulations, Now you are a pro member
                         Meaning, you will have access to all the learning resources
                         provided by me in the course stack.
@@ -58,7 +60,7 @@ const PaymentSuccess = () => {
                 </Button> 
             </Link>
 
-            <Heading size={"xs"}>
+            <Heading size={"xs"} color={"antiquewhite"}>
                 Reference: {reference}
             </Heading>
 

@@ -66,7 +66,8 @@ const Subscribe = ({user}) => {
     <Container h={"90vh"} p={"16"}>
         <Heading children="Welcome" 
                  my={"8"}
-                 textAlign={"center"} />
+                 textAlign={"center"} 
+                 color={"antiquewhite"}/>
         
         <VStack boxShadow={'lg'}
                 alignItems={"stretch"}
@@ -90,6 +91,7 @@ const Subscribe = ({user}) => {
                           textColor={"GrayText"}
                           fontFamily={"consolas"}
                           fontSize={"lg"}
+                          
                           />
                     
                     <Heading size={"md"} children={"$1 ONLY"} textColor={"whiteAlpha.700"}/>

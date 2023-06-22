@@ -1,4 +1,4 @@
-import { Container, Heading, VStack, Box, Button, Input, HStack, FormLabel, Textarea } from '@chakra-ui/react'
+import { Container, Heading, VStack, Box, Button, Input, HStack, FormLabel, Textarea, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,11 +37,11 @@ const Contact = () => {
   return (
     <Container h={"92vh"}>
       <VStack h={"full"} justifyContent={"center"} spacing={"16"}>
-        <Heading children="CONTACT US" />
+        <Heading children="CONTACT US" color={"antiquewhite"} />
         
         <form onSubmit={submitHandler} style={{ width: '100%' }}>
           <Box my={"2"}>
-            <FormLabel htmlFor="name" children="NAME" />
+            <FormLabel htmlFor="name" children="NAME" color={"antiquewhite"}/>
             <Input required id="name"
               value={name}
               onChange={e => setName(e.target.value)}
@@ -51,7 +51,7 @@ const Contact = () => {
 
           </Box>
           <Box my={"2"}>
-            <FormLabel htmlFor="email" children="Email" />
+            <FormLabel htmlFor="email" children="Email" color={"antiquewhite"} />
             <Input required id="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
@@ -62,7 +62,7 @@ const Contact = () => {
           </Box>
 
           <Box my={"2"}>
-            <FormLabel htmlFor="message" children="DROP A MESSAGE FOR US" />
+            <FormLabel htmlFor="message" children="DROP A MESSAGE FOR US" color={"antiquewhite"} />
             <Textarea required id="message"
               value={message}
               onChange={e => setMessage(e.target.value)}
@@ -79,7 +79,7 @@ const Contact = () => {
             </Button>
 
             <Box my={"2"}>
-              NEED a course or explanation?? {' '}
+              <Text color={"antiquewhite"}>NEED a course or explanation?? {' '}</Text>
               <Link to={"/Request"}>
                 <Button colorScheme='purple' variant={"link"}>REQUEST HERE</Button> {" "}
                 For new content

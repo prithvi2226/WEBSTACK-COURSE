@@ -1,4 +1,4 @@
-import { Container, Heading, VStack, Box, Button, Input, HStack, FormLabel, Textarea } from '@chakra-ui/react'
+import { Container, Heading, VStack, Box, Button, Input, HStack, FormLabel, Textarea, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,37 +39,40 @@ const Request = () => {
   return (
     <Container h={"92vh"}>
       <VStack h={"full"} justifyContent={"center"} spacing={"16"}>
-        <Heading children="REQUEST FROM US" />
+        <Heading children="REQUEST FROM US" color={"antiquewhite"} />
 
         <form onSubmit={submitHandler} style={{ width: '100%' }}>
           <Box my={"2"}>
-            <FormLabel htmlFor="name" children="NAME" />
+            <FormLabel htmlFor="name" children="NAME" color={"antiquewhite"} />
             <Input required id="name"
               value={name}
               onChange={e => setName(e.target.value)}
               placeholder='John Doe'
               type={'text'}
-              focusBorderColor="purple.500" />
+              focusBorderColor="purple.500" 
+              color={"antiquewhite"}/>
 
           </Box>
           <Box my={"2"}>
-            <FormLabel htmlFor="email" children="Email" />
+            <FormLabel htmlFor="email" children="Email" color={"antiquewhite"}/>
             <Input required id="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder='abc@gmail.com'
               type={'email'}
-              focusBorderColor="purple.500" />
+              focusBorderColor="purple.500"
+              color={"antiquewhite"} />
 
           </Box>
 
           <Box my={"2"}>
-            <FormLabel htmlFor="course" children="EXPLAIN THE COURSE" />
+            <FormLabel htmlFor="course" children="EXPLAIN THE COURSE" color={"antiquewhite"}/>
             <Textarea required id="course"
               value={course}
               onChange={e => setCourse(e.target.value)}
               placeholder='What explanation or course you want me to provide>>??'
-              focusBorderColor="purple.500" />
+              focusBorderColor="purple.500"
+              color={"antiquewhite"} />
 
           </Box>
 
@@ -81,7 +84,7 @@ const Request = () => {
             </Button>
 
             <Box my={"2"}>
-              Available Courses and Explanations{'>>'}{' '}
+              <Text color={"antiquewhite"}>Available Courses and Explanations{'>>'}{' '}</Text>
               <Link to={"/Main"}>
                 <Button colorScheme='purple' variant={"link"}>COURSES</Button> {" "}
               </Link>

@@ -80,7 +80,8 @@ const CreateCourse = () => {
           <Heading textTransform={'uppercase'}
                     children= "Create Course"
                     my={"16"}
-                    textAlign={['center', 'left']} />
+                    textAlign={['center', 'left']}
+                    color={"antiquewhite"} />
 
           <VStack m={"auto"} spacing={"8"}>
             <Input required
@@ -89,6 +90,7 @@ const CreateCourse = () => {
                           placeholder='Title'
                           type={'text'}
                           focusBorderColor="purple.300"
+                          color={"antiquewhite"}
                           />{' '}
             <Input required
                           value={description} 
@@ -96,6 +98,7 @@ const CreateCourse = () => {
                           placeholder='Description'
                           type={'text'}
                           focusBorderColor="purple.300"
+                          color={"antiquewhite"}
                           />            
             <Input required
                           value={createdBy} 
@@ -103,13 +106,14 @@ const CreateCourse = () => {
                           placeholder='Creator'
                           type={'text'}
                           focusBorderColor="purple.300"
+                          color={"antiquewhite"}
                           />
             
             <Select focusBorderColor='purple.300'
                     value={category}
                     onChange={e => setCategory(e.target.value)}>
               
-              <option value={""}>Category</option>
+              <option value={""} color={"antiquewhite"}>Category</option>
               {categories.map(item=>(
                 <option key={item} value={"item"}>
                   {item}
@@ -121,6 +125,7 @@ const CreateCourse = () => {
                   type={'file'}
                   focusBorderColor="purple.500"
                   accept="image/*"
+                  color={"antiquewhite"}
                   css={{
                     "&::file-selector-button": {
                       ...fileUploadCss, 

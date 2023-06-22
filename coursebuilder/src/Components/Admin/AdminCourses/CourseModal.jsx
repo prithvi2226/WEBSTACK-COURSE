@@ -90,22 +90,26 @@ const CourseModal = ({isOpen,
                             <VStack spacing={"4"}>
                                 <Heading children={"Add Lecture"}
                                          size={"md"}
-                                         textTransform={"uppercase"} />
+                                         textTransform={"uppercase"}
+                                         color={"antiquewhite"} />
                                 
                                 <Input focusBorderColor='purple.300'
                                         placeholder='Title'
                                         value={title}
-                                        onChange={(e)=>setTitle(e.target.value)} />
+                                        onChange={(e)=>setTitle(e.target.value)}
+                                        color={"antiquewhite"} />
 
                                 <Input focusBorderColor='purple.300'
                                         placeholder='Description'
                                         value={description}
-                                        onChange={(e)=>setDescription(e.target.value)} />
+                                        onChange={(e)=>setDescription(e.target.value)}
+                                        color={"antiquewhite"} />
                                 
                                 <Input required  
                                         type={'file'}
                                         focusBorderColor="purple.500"
                                         accept="video/mp4"
+                                        color={"antiquewhite"}
                                         css={{
                                             "&::file-selector-button": {
                                             ...fileUploadCss, 
@@ -157,8 +161,8 @@ function VideoCard({title, description, num, lectureID, courseID, deleteButtonHa
                 p={['4', '8']}>
             <Box>
                 <Heading size={"sm"}
-                         children={`#${num} ${title}`} />
-                <Text children={description} />
+                         children={`#${num} ${title}`} color={"antiquewhite"} />
+                <Text children={description} color={"antiquewhite"}/>
             </Box>
 
             <Button isLoading={loading} 

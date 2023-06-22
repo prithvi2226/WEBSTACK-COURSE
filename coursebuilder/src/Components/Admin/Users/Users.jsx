@@ -49,24 +49,25 @@ const Users = () => {
         <Heading textTransform={'uppercase'}
                     children= "All Users"
                     my={"16"}
-                    textAlign={['center', 'left']} />
+                    textAlign={['center', 'left']} 
+                    color={"antiquewhite"}/>
 
         
         <TableContainer w={["100vw", "full"]}>
           <Table variant={'simple'} size={"lg"}>
 
-          <TableCaption>
+          <TableCaption color={"antiquewhite"}>
             All Available Users in the Database
           </TableCaption>
 
           <Thead>
             <Tr>
-              <Th>Id</Th>
-              <Th>Name</Th>
-              <Th>Email</Th>
-              <Th>Role</Th>
-              <Th>Subscription</Th>
-              <Th isNumeric>Action</Th>
+              <Th color={"antiquewhite"}>Id</Th>
+              <Th color={"antiquewhite"}>Name</Th>
+              <Th color={"antiquewhite"}>Email</Th>
+              <Th color={"antiquewhite"}>Role</Th>
+              <Th color={"antiquewhite"}>Subscription</Th>
+              <Th isNumeric color={"antiquewhite"}>Action</Th>
             </Tr>
 
           </Thead>
@@ -102,23 +103,23 @@ export default Users
 function Row({item, updateHandler, deleteButtonHandler, loading}){
   return (
     <Tr>
-      <Td >
+      <Td color={"antiquewhite"}>
         #{item._id}
       </Td>
-      <Td >
+      <Td color={"antiquewhite"}>
         {item.name}
       </Td>
-      <Td >
+      <Td color={"antiquewhite"}>
         {item.email}
       </Td>
-      <Td >
+      <Td color={"antiquewhite"}>
         {item.role}
       </Td>
-      <Td >
+      <Td color={"antiquewhite"}>
         {item.subscription && item.subscription.status === "active" ? "Active": "Not Active"}
       </Td>
 
-      <Td isNumeric>
+      <Td isNumeric color={"antiquewhite"}>
         <HStack justifyContent={"flex-end"}>
           <Button onClick={()=>updateHandler(item._id)} 
                   variant={"outline"} 

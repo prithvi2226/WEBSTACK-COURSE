@@ -20,38 +20,38 @@ const Login = () => {
   return (
     <Container h = {'95vh'}>
         <VStack h={'full'} justifyContent={"center"} spacing={'16'}>
-            <Heading children={"WELCOME BACK TO PRITHVI"} />
+            <Heading children={"WELCOME BACK TO PRITHVI"} color={"antiquewhite"}/>
 
             <form onSubmit={submitHandler} style={{width: '100%'}}>
               <Box my={"2"}>
-              <FormLabel htmlFor = "email" children="Email" />
+              <FormLabel htmlFor = "email" children="Email" color={"antiquewhite"}/>
               <Input required id="email" 
                      value={email} 
                      onChange={e => setEmail(e.target.value)} 
                      placeholder='abc@gmail.com'
                      type={'email'}
                      focusBorderColor="purple.500"
-
+                     color={"antiquewhite"}
                       />
 
               </Box>
 
               <Box my={"6"}>
-              <FormLabel htmlFor = "password" children="Password" />
+              <FormLabel htmlFor = "password" children="Password" color={"antiquewhite"}/>
               <Input required id="password" 
                      value={password} 
                      onChange={e => setPassword(e.target.value)} 
                      placeholder='Enter Your Password'
                      type={'password'}
                      focusBorderColor="purple.500"
-
+                     color={"antiquewhite"}
                       />
               </Box>
 
               <HStack spacing={"10"}justifyContent={"flex-start"}>
                 
-              <Button my="4" colorScheme={'purple'} type='submit'>
-                Login
+              <Button my="4" colorScheme={'purple'} type='submit' variant={"ghost"}>
+                Login 
               </Button>
               
               <Box my={"2"}>

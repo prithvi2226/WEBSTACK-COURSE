@@ -35,9 +35,9 @@ const ResetPassword = () => {
     <Container paddingY={14} h="90vh">
       <form onSubmit={submitHandler}>
         <VStack spacing={8}>
-          <Heading children="RESET YOUR PASSWORD" my={14} textTransform="uppercase" textAlign="center" />
+          <Heading children="RESET YOUR PASSWORD" my={14} textTransform="uppercase" textAlign="center" color={"antiquewhite"} />
 
-          <Text fontFamily="consolas" fontSize="xl">
+          <Text fontFamily="consolas" fontSize="xl" color={"antiquewhite"}>
             TYPE IN YOUR NEW PASSWORD
           </Text>
           <Input

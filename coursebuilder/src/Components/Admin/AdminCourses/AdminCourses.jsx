@@ -81,26 +81,26 @@ const AdminCourses = () => {
         <Heading textTransform={'uppercase'}
                     children= "COURSES"
                     my={"16"}
-                    textAlign={['center', 'left']} />
+                    textAlign={['center', 'left']} color={"antiquewhite"}/>
 
         
         <TableContainer w={["100vw", "full"]}>
           <Table variant={'simple'} size={"lg"}>
 
-          <TableCaption>
+          <TableCaption color={"antiquewhite"}>
             All Available Courses in the Database
           </TableCaption>
 
           <Thead>
             <Tr>
-              <Th>Id</Th>
-              <Th>Course Preview</Th>
-              <Th>Title</Th>
-              <Th>Category</Th>
-              <Th>Creator</Th>
-              <Th isNumeric>Views</Th>
-              <Th isNumeric>Lectures</Th>
-              <Th isNumeric>Action</Th>
+              <Th color={"antiquewhite"}>Id</Th>
+              <Th color={"antiquewhite"}>Course Preview</Th>
+              <Th color={"antiquewhite"}>Title</Th>
+              <Th color={"antiquewhite"}>Category</Th>
+              <Th color={"antiquewhite"}>Creator</Th>
+              <Th isNumeric color={"antiquewhite"}>Views</Th>
+              <Th isNumeric color={"antiquewhite"}>Lectures</Th>
+              <Th isNumeric color={"antiquewhite"}>Action</Th>
             </Tr>
 
           </Thead>
@@ -147,31 +147,31 @@ export default AdminCourses;
 function Row({item, courseDetailsHandler, deleteButtonHandler, loading}){
   return (
     <Tr>
-      <Td >
+      <Td color={"antiquewhite"}>
         #{item._id}
       </Td>
-      <Td >
+      <Td color={"antiquewhite"}>
         <Image src={item.poster.url} />
       </Td>
-      <Td >
+      <Td color={"antiquewhite"}>
         {item.title}
       </Td>
-      <Td textTransform={"uppercase"}>
+      <Td textTransform={"uppercase"} color={"antiquewhite"}>
         {item.category}
       </Td>
-      <Td >
+      <Td color={"antiquewhite"}>
         {item.createdBy}
       </Td>
 
-      <Td isNumeric>
+      <Td isNumeric color={"antiquewhite"}>
         {item.views}
       </Td>
 
-      <Td isNumeric>
+      <Td isNumeric color={"antiquewhite"}>
         {item.numOfVideos}
       </Td>
 
-      <Td isNumeric>
+      <Td isNumeric color={"antiquewhite"}>
         <HStack justifyContent={"flex-end"}>
           <Button onClick={()=>courseDetailsHandler(item._id, item.title)} 
                   variant={"outline"} 

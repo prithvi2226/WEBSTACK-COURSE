@@ -12,11 +12,12 @@ import {Button,
 import {RiDashboardFill, RiLogoutBoxLine, RiMenu5Fill} from "react-icons/ri";
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../REDUX/actions/user';
+import Helmet from 'react-helmet';
 
 
 const LinkButton = ({ url = '/', title = 'Home', onClose }) => (
   <Link to={url}>
-    <Button variant="ghost" onClick={onClose}>
+    <Button variant="ghost" onClick={onClose} color={"antiquewhite"}>
       {title}
     </Button>
   </Link>
@@ -37,6 +38,7 @@ const Header = ({isAuthenticated = false, user}) => {
   return (
     <>
 
+    <Helmet bodyAttributes={{ style: 'background-color : #1A202C' }} />
     <Button 
     onClick={onOpen}
     colorScheme={"gray"} 
@@ -51,17 +53,17 @@ const Header = ({isAuthenticated = false, user}) => {
     </Button>
     <Drawer placement="left" onClose={onClose} isOpen= {isOpen}>
       <DrawerOverlay backdropFilter={'blur(2px)'} />
-      <DrawerContent>
-        <DrawerHeader>STUDY CONTENT</DrawerHeader>
+      <DrawerContent bg="#1a202c">
+        <DrawerHeader color={"antiquewhite"}>STUDY CONTENT</DrawerHeader>
 
         <DrawerBody>
         
           <VStack spacing={"4"} alignItems={"flex-start"}>
             <LinkButton url = "/MAIN" title = "HOME" onClose={onClose}/>
-            <LinkButton url = "/Leetcode" title = "LEETCODE PRACTICE & OTHERS" onClose={onClose}/>
+            {/* <LinkButton url = "/Leetcode" title = "LEETCODE PRACTICE & OTHERS" onClose={onClose}/>
             <LinkButton url = "/AWS-Guide" title = "AWS ASSOCIATE ARCHITECT GUIDE" onClose={onClose}/>
-            <LinkButton url = "/InterviewStudy" title = "INTERVIEW PREP" onClose={onClose}/>
-            <LinkButton url = "/Contact" title = "FEEDBACK" onClick={onClose}/>
+            <LinkButton url = "/InterviewStudy" title = "INTERVIEW PREP" onClose={onClose}/> */}
+            <LinkButton url = "/Contact" title = "FEEDBACK" onClose={onClose}/>
             <LinkButton url = "/Request" title = "REQUEST A COURSE??" onClose={onClose}/>
             <LinkButton url = "/About" title = "ABOUT US" onClose={onClose}/>
 
@@ -75,7 +77,7 @@ const Header = ({isAuthenticated = false, user}) => {
                   <HStack>
                   
                   <LinkButton url = "/Profile" title = "PROFILE" onClose={onClose}></LinkButton>
-                  <Button variant={'ghost'} onClick={logoutHandler}>
+                  <Button color={"antiquewhite"} variant={'ghost'} onClick={logoutHandler}>
                     <RiLogoutBoxLine />
                     LOGOUT
                     </Button>

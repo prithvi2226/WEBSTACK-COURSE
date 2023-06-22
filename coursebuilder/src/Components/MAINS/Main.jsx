@@ -9,20 +9,20 @@ import { loadUser } from '../../REDUX/actions/user';
 
 const Course = ({ views, title, imageSrc, id, addToPlaylistHandler, creator, description, lecture, loading }) => {
   return (
-    <VStack className="course" alignItems={['center']}>
+    <VStack className="course" alignItems={['center']} border='2px solid purple' p={4} borderRadius='md'>
       <Image src={imageSrc} boxSize={60} objectFit='contain' />
-      <Heading textAlign={["center", "left"]} maxW='200px' fontFamily='consolas' noOfLines={3} children={title} />
+      <Heading textAlign={["center", "left"]} maxW='200px' fontFamily='consolas' noOfLines={3} children={title} color='antiquewhite' />
 
-      <Text children={description} noOfLines={3} fontFamily='consolas' fontSize='large' />
+      <Text maxW='200px' textAlign='center' fontFamily='consolas' fontSize='large' color='antiquewhite' noOfLines={3} children={description} />
 
       <HStack>
-        <Text fontWeight='bold' fontFamily='consolas' textTransform='uppercase' children='CREATOR' />
-        <Text fontWeight='bold' fontFamily='consolas' textTransform='uppercase' children={creator} />
+        <Text fontWeight='bold' fontFamily='consolas' textTransform='uppercase' children='CREATOR' color='antiquewhite' />
+        <Text fontWeight='bold' fontFamily='consolas' textTransform='uppercase' children={creator} color='antiquewhite' />
       </HStack>
 
-      <Heading textAlign='center' size='xs' children={`Hours - ${lecture}`} textTransform='uppercase' />
+      <Heading textAlign='center' size='xs' children={`Hours - ${lecture}`} textTransform='uppercase' color='antiquewhite' />
 
-      <Heading size='xs' children={`VIEWS - ${views}`} textTransform='uppercase' />
+      <Heading size='xs' children={`VIEWS - ${views}`} textTransform='uppercase' color='antiquewhite' />
 
       <Stack direction={["column", "row"]} alignItems='center'>
         <Link to={`/Course/${id}`}>
@@ -30,11 +30,7 @@ const Course = ({ views, title, imageSrc, id, addToPlaylistHandler, creator, des
             START
           </Button>
         </Link>
-        <Button fontFamily='consolas' 
-                colorScheme='purple' 
-                isLoading={loading}
-                variant='outline' 
-                onClick={() => addToPlaylistHandler(id)}>
+        <Button fontFamily='consolas' colorScheme='purple' isLoading={loading} variant='outline' onClick={() => addToPlaylistHandler(id)}>
           ADD TO PLAYLIST
         </Button>
       </Stack>
@@ -53,7 +49,7 @@ const Main = () => {
     dispatch(loadUser());
   };
 
-  const categories = ["Interview Prep", "INTERVIEW DSA PRACTICE", "AWS"];
+  const categories = ["Leetcode", "Health", "AWS"];
 
   const { loading, courses, error, message } = useSelector((state) => state.courses);
 
@@ -74,7 +70,7 @@ const Main = () => {
 
   return (
     <Container minH='95vh' maxW='container.lg' paddingY='8'>
-      <Heading children='ALL THE CONTENT' m='8' />
+      <Heading children='ALL THE CONTENT' m='8' color={"antiquewhite"} />
 
       <Input
         value={Keyword}
@@ -86,8 +82,8 @@ const Main = () => {
 
       <HStack padding='8'>
         {categories.map((item, index) => (
-          <Button key={index} onClick={() => setCategory(item)} minW='60'>
-            <Text children={item} />
+          <Button key={index} onClick={() => setCategory(item)} minW='60' colorScheme="blackAlpha">
+            <Text children={item} color={"antiquewhite"} />
           </Button>
         ))}
       </HStack>
@@ -112,7 +108,7 @@ const Main = () => {
               addToPlaylistHandler={addToPlaylistHandler}
               loading={loading}
             />
-          )) : <Heading children="COURSE NOT FOUND" fontFamily={'consolas'} />}
+          )) : <Heading children="COURSE NOT FOUND" fontFamily={'consolas'} color={"antiquewhite"} />}
       </Stack>
     </Container>
   );

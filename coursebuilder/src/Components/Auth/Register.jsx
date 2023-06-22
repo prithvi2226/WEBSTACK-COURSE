@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Container, FormLabel, HStack, Heading, Input, VStack } from '@chakra-ui/react'
+import { Avatar, Box, Button, Container, FormLabel, HStack, Heading, Input, Text, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -57,7 +57,7 @@ const Register = () => {
   return (
     <Container h = {'110vh'}>
         <VStack h={'fit-content'} justifyContent={"center"} spacing={'16'}>
-            <Heading textTransform={'uppercase'} children={"WELCOME TO THE PRI EXPERIENCE"} />
+            <Heading textTransform={'uppercase'} children={"WELCOME TO THE PRI EXPERIENCE"} color={"antiquewhite"}/>
 
             <Box justifyContent={"center"} display={"flex"} my={"0.000001"} >
               <Avatar my={"0.0000001"} 
@@ -69,51 +69,51 @@ const Register = () => {
             <form onSubmit={submitHandler} style={{width: '100%'}}>
                       
             <Box my={"1"}>
-              <FormLabel htmlFor = "name" children="Name" />
+              <FormLabel htmlFor = "name" children="Name" color={"antiquewhite"}/>
               <Input required id="name" 
                      value={name} 
                      onChange={e => setName(e.target.value)} 
                      placeholder='Tim'
                      type={'text'}
                      focusBorderColor="purple.500"
-
+                     color={"antiquewhite"}
                       />
 
               </Box>
               <Box my={"2"}>
-              <FormLabel htmlFor = "email" children="Email" />
+              <FormLabel htmlFor = "email" children="Email" color={"antiquewhite"}/>
               <Input required id="email" 
                      value={email} 
                      onChange={e => setEmail(e.target.value)} 
                      placeholder='abc@gmail.com'
                      type={'email'}
                      focusBorderColor="purple.500"
-
+                     color={"antiquewhite"}
                       />
 
               </Box>
 
               <Box my={"6"}>
-              <FormLabel htmlFor = "password" children="Password" />
+              <FormLabel htmlFor = "password" children="Password" color={"antiquewhite"}/>
               <Input required id="password" 
                      value={password} 
                      onChange={e => setPassword(e.target.value)} 
                      placeholder='Enter Your Password'
                      type={'password'}
                      focusBorderColor="purple.500"
-
+                     color={"antiquewhite"}
                       />
               </Box>
 
               <Box my={"6"}>
-              <FormLabel htmlFor = "chooseAvatar" children="Upload A Profile" />
+              <FormLabel htmlFor = "chooseAvatar" children="Upload A Profile" color={"antiquewhite"} />
               <Input required id="chooseAvatar" 
                      type={'file'}
                      focusBorderColor="purple.500"
                      accept="image/*"
                      css={fileUploadStyle}
                      onChange={changeImageHandler}
-
+                     color={"antiquewhite"}
                       />
               </Box>
 
@@ -125,7 +125,7 @@ const Register = () => {
               
               <Box my={"2"}>
                 
-                Already Registered? {' '} <Link to={"/Login"}>
+                <Text color={"antiquewhite"}>Already Registered? {' '}</Text> <Link to={"/Login"}>
                     <Button colorScheme='purple'variant={"link"}>LOGIN</Button> {" "}
                     here
                      </Link>

@@ -41,20 +41,24 @@ const ChangPassword = () => {
       <form onSubmit={submitHandler}>
         <Heading children={"CHANGE PASSWORD"}
           my={"16"}
-          textAlign={['center', 'left']} />
+          textAlign={['center', 'left']} color={"antiquewhite"} />
+
         <VStack spacing={"8"}>
           <Input required id="password"
             value={oldPassword}
             onChange={e => setOldPassword(e.target.value)}
             placeholder='Old Password'
             type={'password'}
-            focusBorderColor="purple.500" />
+            focusBorderColor="purple.500"
+            color={"antiquewhite"} />
+
           <Input required id="password"
             value={newPassword}
             onChange={e => setNewPassword(e.target.value)}
             placeholder='New Password'
             type={'password'}
-            focusBorderColor="purple.500" />
+            focusBorderColor="purple.500"
+            color={"antiquewhite"} />
 
           <Button isLoading={loading}
             w={"full"}

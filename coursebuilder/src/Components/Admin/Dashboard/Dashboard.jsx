@@ -15,29 +15,29 @@ const Databox = ({ title, qty, qtyPercentage, profit }) => (
     p="8"
     borderRadius="lg"
   >
-    <Text children={title} />
+    <Text children={title} color={"antiquewhite"} />
 
     <HStack spacing="6">
-      <Text fontSize="2xl" fontWeight="bold" children={qty} />
+      <Text fontSize="2xl" fontWeight="bold" children={qty} color={"antiquewhite"} />
 
       <HStack>
-        <Text children={`${qtyPercentage}%`} />
+        <Text children={`${qtyPercentage}%`} color={"antiquewhite"} />
         {profit ? <RiArrowUpLine color="green" /> : <RiArrowDownLine color="red" />}
       </HStack>
     </HStack>
 
-    <Text opacity={0.6} children="Since Last Month" />
+    <Text opacity={0.6} children="Since Last Month" color={"antiquewhite"} />
   </Box>
 );
 
 const Bar = ({ title, value, profit }) => (
   <Box py="4" px={['0', '20']}>
-    <Heading size="sm" children={title} mb="2" />
+    <Heading size="sm" children={title} mb="2" color={"antiquewhite"}/>
 
     <HStack w="full" alignItems="center">
-      <Text children={profit ? '0%' : `-${value}%`} />
+      <Text children={profit ? '0%' : `-${value}%`} color={"antiquewhite"}/>
       <Progress w="full" value={profit ? value : 0} colorScheme="purple" />
-      <Text children={`${value > 100 ? value : 100}%`} />
+      <Text children={`${value > 100 ? value : 100}%`} color={"antiquewhite"} />
     </HStack>
   </Box>
 );
@@ -82,6 +82,7 @@ const Dashboard = () => {
               textAlign="center"
               opacity={0.5}
               children={`Last Change was on ${String(new Date()).split('G')[0]}`}
+              color={"antiquewhite"}
             />
 
             <Heading
@@ -89,6 +90,7 @@ const Dashboard = () => {
               ml={['0', '16']}
               mb="16"
               textAlign={['center', 'left']}
+              color={"antiquewhite"}
             />
 
             <Stack
@@ -131,6 +133,7 @@ const Dashboard = () => {
                 children="Views Graph"
                 pt={['8', '0']}
                 ml={['0', '16']}
+                color={"antiquewhite"}
               />
 
               {/* Line Graph here */}
@@ -145,6 +148,7 @@ const Dashboard = () => {
                   children="Progress Bar"
                   my="8"
                   ml={['0', '16']}
+                  color={"antiquewhite"}
                 />
 
                 <Box>
@@ -160,6 +164,7 @@ const Dashboard = () => {
                   size="md"
                   mb="4"
                   children="Users"
+                  color={"antiquewhite"}
                 />
 
                 {/* Donut Graph */}

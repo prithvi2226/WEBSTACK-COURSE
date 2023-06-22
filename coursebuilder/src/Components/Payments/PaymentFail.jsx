@@ -9,7 +9,7 @@ const PaymentFail = () => {
                 p={"16"}>
         
         <Heading my={"8"}
-                textAlign={'center'}>
+                textAlign={'center'} color={"antiquewhite"}>
             PAYMENT UNSUCCESSFUL {`:(`}
             
         </Heading>

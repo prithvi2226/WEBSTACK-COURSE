@@ -35,13 +35,13 @@ const Founder = () => (
             <Avatar src={link} 
                     boxSize={['40', '48']} />
             <Text children="Co-Founder" 
-                  opacity={0.7} />
+                  opacity={0.7} color={"antiquewhite"} />
         </VStack>
 
         <VStack justifyContent={'center'} alignItems={["center", "flex-start"]}>
             <Heading children="Prith" size={["md", "xl"]} />
             <Text textAlign={["center", "left"]}
-                  children={`IM THE BO$$ BITCH! I make the content `} />
+                  children={`IM THE BO$$ BITCH! I make the content `} color={"antiquewhite"} />
         </VStack>
 
     </Stack>
@@ -76,12 +76,12 @@ const About = () => {
       <Founder />
 
       <Stack m={"8"} direction={["column", "row"]} alignItems={"center"}>
-        <Text fontFamily={"consolas"} m={"8"} textAlign={["center", "left"]}>
+        <Text fontFamily={"consolas"} m={"8"} textAlign={["center", "left"]} color={"antiquewhite"}>
           I got courses that will get the skills for u to pay the bills
         </Text>
 
         <Link to={"/Subscribe"}>
-          <Button variant={"ghost"} colorScheme='purple'>
+          <Button variant={"ghost"} colorScheme='purple' >
             GET THE PRO PLAN
           </Button>
         </Link>
@@ -97,7 +97,8 @@ const About = () => {
         <Heading size={"xs"}
           fontFamily={"sans-serif"}
           children={"Payment is secured by VISA"}
-          textTransform={"uppercase"} />
+          textTransform={"uppercase"} 
+          color={"antiquewhite"}/>
       </HStack>
 
     </Container>
