@@ -78,6 +78,7 @@ const Main = () => {
         placeholder='WHAT ARE YOU LOOKIN FOR?'
         type='text'
         focusBorderColor='gray.500'
+        color='antiquewhite'
       />
 
       <HStack padding='8'>
