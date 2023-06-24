@@ -39,9 +39,9 @@ const Founder = () => (
         </VStack>
 
         <VStack justifyContent={'center'} alignItems={["center", "flex-start"]}>
-            <Heading children="Prith" size={["md", "xl"]} />
+            <Heading children="PRITHVI PRATHAP" size={["md", "xl"]} color={"antiquewhite"}/>
             <Text textAlign={["center", "left"]}
-                  children={`IM THE BO$$ BITCH! I make the content `} color={"antiquewhite"} />
+                  children={`Courses for Software development!`} color={"antiquewhite"} />
         </VStack>
 
     </Stack>
@@ -72,12 +72,14 @@ const About = () => {
       bg={"blackAlpha.300"}
       h={"90vh"}>
       <Heading children={"About US"}
-        textAlign={["center", "left"]} />
+        textAlign={["center", "left"]}
+        color={"antiquewhite"} />
       <Founder />
 
       <Stack m={"8"} direction={["column", "row"]} alignItems={"center"}>
         <Text fontFamily={"consolas"} m={"8"} textAlign={["center", "left"]} color={"antiquewhite"}>
-          I got courses that will get the skills for u to pay the bills
+          Different types of courses to level up your software engineering skills with courses from AWS 
+          to Leetcode preparation.
         </Text>
 
         <Link to={"/Subscribe"}>

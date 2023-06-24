@@ -9,15 +9,15 @@ import { loadUser } from '../../REDUX/actions/user';
 
 const Course = ({ views, title, imageSrc, id, addToPlaylistHandler, creator, description, lecture, loading }) => {
   return (
-    <VStack className="course" alignItems={['center']} border='2px solid purple' p={4} borderRadius='md'>
+    <VStack className="course" alignItems={['center']} border='2px solid lightgray' p={4} borderRadius='md'>
       <Image src={imageSrc} boxSize={60} objectFit='contain' />
-      <Heading textAlign={["center", "left"]} maxW='200px' fontFamily='consolas' noOfLines={3} children={title} color='antiquewhite' />
+      <Heading textAlign={"center"} maxW='200px' noOfLines={3} children={title} color='antiquewhite' />
 
-      <Text maxW='200px' textAlign='center' fontFamily='consolas' fontSize='large' color='antiquewhite' noOfLines={3} children={description} />
+      <Text maxW='200px' textAlign='center' fontSize='large' color='antiquewhite' noOfLines={3} children={description} />
 
       <HStack>
-        <Text fontWeight='bold' fontFamily='consolas' textTransform='uppercase' children='CREATOR' color='antiquewhite' />
-        <Text fontWeight='bold' fontFamily='consolas' textTransform='uppercase' children={creator} color='antiquewhite' />
+        <Text fontWeight='bold' textTransform='uppercase' children='CREATOR' color='antiquewhite' />
+        <Text fontWeight='bold' textTransform='uppercase' children={creator} color='antiquewhite' />
       </HStack>
 
       <Heading textAlign='center' size='xs' children={`Hours - ${lecture}`} textTransform='uppercase' color='antiquewhite' />
