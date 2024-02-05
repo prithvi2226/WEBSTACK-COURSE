@@ -27,7 +27,7 @@ const Course = ({ views, title, imageSrc, id, addToPlaylistHandler, creator, des
       <Stack direction={["column", "row"]} alignItems='center'>
         <Link to={`/Course/${id}`}>
           <Button fontFamily='consolas' colorScheme='purple' variant='outline'>
-            START
+            STARTE
           </Button>
         </Link>
         <Button fontFamily='consolas' colorScheme='purple' isLoading={loading} variant='outline' onClick={() => addToPlaylistHandler(id)}>
