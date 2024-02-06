@@ -78,7 +78,7 @@ const About = () => {
 
       <Stack m={"8"} direction={["column", "row"]} alignItems={"center"}>
         <Text fontFamily={"consolas"} m={"8"} textAlign={["center", "left"]} color={"antiquewhite"}>
-          Different types of courses to level up your software engineering skills with courses from AWS 
+          Different types of courses to level up your software engineering skills with courses from AI Infrastructure
           to Leetcode preparation.
         </Text>
 
