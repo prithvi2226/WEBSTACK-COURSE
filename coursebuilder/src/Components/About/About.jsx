@@ -84,7 +84,7 @@ const About = () => {
 
         <Link to={"/Subscribe"}>
           <Button variant={"ghost"} colorScheme='purple' >
-            GET THE PRO PLAN
+            GET THE PRI PLAN
           </Button>
         </Link>
 
