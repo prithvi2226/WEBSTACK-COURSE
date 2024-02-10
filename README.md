@@ -120,7 +120,7 @@ Start development server
 npm run dev
 ```
 
-This project exposes a package.json script for accessing prisma via `yarn db:<command>`. You should always try to use this script when interacting with prisma locally.
+This project exposes a package.json script for accessing prisma via `npm db:<command>`. You should always try to use this script when interacting with CourseBuilder locally.
 
 ## 🛸 How to Deploy the Project
 
